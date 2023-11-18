@@ -1,12 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { Loading } from './components/ActivityIndicator';
+import React from "react";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import { Loading } from "./components/ActivityIndicator";
+import { NextFut } from "./components/NextFut/component";
+import { Header } from "./components/Header/component";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Loading/>
-      <Text>Baba europeu!</Text>
+      <Header />
+      <Loading />
+      <NextFut />
       <StatusBar style="auto" />
     </View>
   );
@@ -15,8 +19,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
