@@ -5,10 +5,11 @@ import { styles } from "./styles";
 export const Header = () => {
   return (
     <View style={styles.container}>
-      <Image source={require('./../../assets/baba-logo.png')} style={styles.logo} />
+      <Image
+        source={require("./../../assets/baba-logo.png")}
+        style={styles.logo}
+      />
       <Text style={styles.title}>Baba Europeu App</Text>
     </View>
   );
 };
-
-

@@ -47,19 +47,6 @@ export const NextFut = () => {
   return (
     <TouchableWithoutFeedback>
       <View style={styles.container}>
-        <Text>Lista de presença</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Bote se vc vai pro baba"
-          value={playerName}
-          onChangeText={setPlayerName}
-          onSubmitEditing={handleAddPlayer}
-        />
-
-        <TouchableOpacity style={styles.button} onPress={handleAddPlayer}>
-          <Text style={styles.buttonText}>Botar o seu nome</Text>
-        </TouchableOpacity>
-
         <FlatList
           data={players}
           keyExtractor={(item) => item.toString()}
@@ -72,6 +59,17 @@ export const NextFut = () => {
             />
           )}
         />
+        <Text>Lista de presença</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Bote se vc vai pro baba"
+          value={playerName}
+          onChangeText={setPlayerName}
+          onSubmitEditing={handleAddPlayer}
+        />
+        <TouchableOpacity style={styles.button} onPress={handleAddPlayer}>
+          <Text style={styles.buttonText}>Botar o seu nome</Text>
+        </TouchableOpacity>
       </View>
     </TouchableWithoutFeedback>
   );

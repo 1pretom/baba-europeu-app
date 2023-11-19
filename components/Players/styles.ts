@@ -6,7 +6,8 @@ export const styles = StyleSheet.create({
     backgroundColor: "red",
   },
   name: {
-    color: "black",
+    color: "white",
+    textAlign: "center",
   },
   button: {
     backgroundColor: "black",

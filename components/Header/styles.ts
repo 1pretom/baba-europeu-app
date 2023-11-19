@@ -7,7 +7,8 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 10,
     backgroundColor: "#3498db", 
-    borderRadius: 12
+    borderRadius: 12,
+    width: "100%"
   },
   logo: {
     width: 40, 
@@ -19,5 +20,33 @@ export const styles = StyleSheet.create({
     fontSize: 20, 
     color: "#fff", 
     fontWeight: "bold",
+  },
+  menuIcon: {
+    width: 30,
+    height: 30,
+    marginLeft: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  bar1: {
+    height: 3,
+    width: 25,
+    backgroundColor: "#fff",
+    marginVertical: 4,
+    transform: [{ rotate: "45deg" }],
+  },
+  bar2: {
+    height: 3,
+    width: 25,
+    backgroundColor: "#fff",
+    marginVertical: 4,
+    opacity: 0,
+  },
+  bar3: {
+    height: 3,
+    width: 25,
+    backgroundColor: "#fff",
+    marginVertical: 4,
+    transform: [{ rotate: "-45deg" }],
   },
 });
