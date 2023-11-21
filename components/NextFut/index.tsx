@@ -11,6 +11,14 @@ import {
 } from "react-native";
 import { Players } from "../Players";
 import { styles } from "./styles";
+import {
+  ALERT_MESSAGE,
+  ALERT_TITLE,
+  ALREADY_ADDED,
+  BUTTON_NAME,
+  INSERT_NAME,
+  PRESENCE_LIST,
+} from "./constants";
 
 export const NextFut = () => {
   const [players, setPlayers] = useState<string[]>([]);
@@ -18,7 +26,7 @@ export const NextFut = () => {
 
   const handleAddPlayer = () => {
     if (players.includes(playerName)) {
-      return alert(`${playerName} já foi adicionado`);
+      return alert(`${playerName} ${ALREADY_ADDED}`);
     } else if (playerName.trim() !== "") {
       setPlayers([...players, playerName]);
       setPlayerName("");
@@ -27,7 +35,7 @@ export const NextFut = () => {
 
   const handleRemovePlayer = (name: string) => {
     //TODO: ver se o alert aparece no device pq no web não aparece
-    Alert.alert("Remover", `Remover o participante ${name}?`, [
+    Alert.alert(`${ALERT_TITLE}`, `${ALERT_MESSAGE} ${name}?`, [
       {
         text: "Sim",
         onPress: () =>
@@ -40,8 +48,6 @@ export const NextFut = () => {
         style: "cancel",
       },
     ]);
-
-    setPlayers((prevState) => prevState.filter((player) => player !== name));
   };
 
   return (
@@ -50,7 +56,6 @@ export const NextFut = () => {
         <FlatList
           data={players}
           keyExtractor={(item) => item.toString()}
-          keyboardShouldPersistTaps="handled"
           renderItem={({ item }) => (
             <Players
               key={item}
@@ -59,16 +64,16 @@ export const NextFut = () => {
             />
           )}
         />
-        <Text>Lista de presença</Text>
+        <Text>{PRESENCE_LIST}</Text>
         <TextInput
           style={styles.input}
-          placeholder="Bote se vc vai pro baba"
+          placeholder={INSERT_NAME}
           value={playerName}
           onChangeText={setPlayerName}
           onSubmitEditing={handleAddPlayer}
         />
         <TouchableOpacity style={styles.button} onPress={handleAddPlayer}>
-          <Text style={styles.buttonText}>Botar o seu nome</Text>
+          <Text style={styles.buttonText}>{BUTTON_NAME}</Text>
         </TouchableOpacity>
       </View>
     </TouchableWithoutFeedback>

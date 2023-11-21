@@ -2,8 +2,9 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { Loading } from "./components/ActivityIndicator";
-import { NextFut } from "./components/NextFut/component";
-import { Header } from "./components/Header/component";
+import { NextFut } from "./components/NextFut";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <Header />
       <Loading />
       <NextFut />
+      <Footer/>
       <StatusBar style="auto" />
     </View>
   );
