@@ -1,6 +1,6 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { Header } from "../../components/Header";
 import { Loading } from "../../components/ActivityIndicator";
 import { Footer } from "../../components/Footer";
