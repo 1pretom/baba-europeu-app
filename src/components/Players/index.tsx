@@ -1,17 +1,16 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
+import { REMOVE_NAME } from "./constants";
+import { TPlayers } from "./types";
 
-type TPlayers = {
-  name: string;
-  onRemove: () => void;
-};
 
-export const Players = ({ name, onRemove }: TPlayers) => {
+
+export const Players = ({ index, name, onRemove }: TPlayers) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.name}>{name}</Text>
+      <Text style={styles.name}>{index} {name}</Text>
       <TouchableOpacity style={styles.button} onPress={onRemove}>
-        <Text style={styles.buttonText}>Se Sair</Text>
+        <Text style={styles.buttonText}>{REMOVE_NAME}</Text>
       </TouchableOpacity>
     </View>
   );
