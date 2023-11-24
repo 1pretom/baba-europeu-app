@@ -1,1 +1,1 @@
-export './PlayersList';
+export * from './component';

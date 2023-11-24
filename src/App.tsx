@@ -1,8 +1,8 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
-import { styles } from "./src/Screens/PlayersList/styles";
-import { PlayersList } from "./src/Screens/PlayersList/component";
+import { styles } from "./Screens/PlayersList/styles";
+import { PlayersList } from "./Screens/PlayersList/component";
 
 
 

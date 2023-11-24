@@ -9,7 +9,7 @@ import {
   Alert,
   TouchableOpacity,
 } from "react-native";
-import { Players } from "../Players";
+import { Players } from "../Players/component";
 import { styles } from "./styles";
 import {
   ALERT_MESSAGE,
