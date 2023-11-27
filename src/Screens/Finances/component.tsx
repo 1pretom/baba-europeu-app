@@ -1,9 +1,9 @@
 import { View, Text } from "react-native";
 
-export const Financies = () => {
+export const Finances = () => {
   return (
     <View>
-      <Text></Text>
+      <Text>Finances</Text>
     </View>
   );
 };

@@ -13,7 +13,7 @@ export const PlayersList = () => {
       <Header />
       <Loading />
       <NextFut />
-      <Footer />
+      
       <StatusBar style="auto" />
     </View>
   );

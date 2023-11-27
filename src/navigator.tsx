@@ -1,6 +1,7 @@
+import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { PlayersList } from "./Screens/PlayersList";
-import { Financies } from "./Screens/Financies";
+import { Finances } from "./Screens/Finances";
 import { MatchSettings } from "./Screens/MatchSettings";
 import { Profile } from "./Screens/Profile";
 import { Rankings } from "./Screens/Rankings";
@@ -12,8 +13,8 @@ export const Navigation = () => {
     <Stack.Navigator>
       <Stack.Screen
         options={{ animation: "flip" }}
-        name="Financies"
-        component={Financies}
+        name="Finances"
+        component={Finances}
       />
       <Stack.Screen
         options={{ animation: "flip" }}
