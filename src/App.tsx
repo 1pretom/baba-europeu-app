@@ -12,7 +12,7 @@ export default function App() {
       <PlayersList />
       <StatusBar style="auto" />
       <NavigationContainer>
-        <Footer />
+        <Footer navigation={navigator} />
       </NavigationContainer>
     </View>
   );

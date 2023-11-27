@@ -3,14 +3,12 @@ import { View, Button } from "react-native";
 import { useNavigation } from "@react-navigation/native"; // Import useNavigation hook
 import { TEXT } from "./constants";
 
-export const Footer = () => {
-  const navigation = useNavigation(); // Use useNavigation hook to get navigation object
-
+export const Footer = ({ navigation }) => {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Button
         title="Go to Finances"
-        onPress={() => navigation.navigate("Finances")} // Corrected spelling of "Finances"
+        onPress={() => navigation.navigate("Finances")}
       />
       <Button
         title="Go to MatchSettings"
