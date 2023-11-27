@@ -8,36 +8,40 @@ import { Rankings } from "./Screens/Rankings";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
-
 const Screen = () => {
+  const Tab = createBottomTabNavigator();
   return (
     <Tab.Navigator
       initialRouteName="PlayersList"
       screenOptions={{ headerShown: false }}
     >
       <Tab.Screen
-      name='PlayersList'
-      component={PlayersList}
-      options={{title:'MatchSettings', 
-      // tabBarIcon: ({size,color}) =>(
-      //   <MaterialCommunityIcons name="home" size={size} color={color}/>
-      // )
-      }}/>
+        name="PlayersList"
+        component={PlayersList}
+        options={{
+          title: "MatchSettings",
+          // tabBarIcon: ({size,color}) =>(
+          //   <MaterialCommunityIcons name="home" size={size} color={color}/>
+          // )
+        }}
+      />
       <Tab.Screen
-      name='MatchSettings'
-      component={MatchSettings}
-      options={{title:'PlayersList', 
-      // tabBarIcon: ({size,color}) =>(
-      //   <MaterialCommunityIcons name="home" size={size} color={color}/>
-      // )
-      }}/>
+        name="MatchSettings"
+        component={MatchSettings}
+        options={{
+          title: "PlayersList",
+          // tabBarIcon: ({size,color}) =>(
+          //   <MaterialCommunityIcons name="home" size={size} color={color}/>
+          // )
+        }}
+      />
     </Tab.Navigator>
   );
 };
 
 export const Navigation = () => {
+  const Stack = createNativeStackNavigator();
+
   return (
     <NavigationContainer>
       <Stack.Navigator
