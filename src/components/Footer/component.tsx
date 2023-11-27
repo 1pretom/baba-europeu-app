@@ -3,7 +3,7 @@ import { View, Button } from "react-native";
 import { useNavigation } from "@react-navigation/native"; // Import useNavigation hook
 import { TEXT } from "./constants";
 
-export const Footer = ({ navigation }) => {
+export const Footer = ({ navigation }: any) => {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Button
