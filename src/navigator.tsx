@@ -8,75 +8,66 @@ import { Rankings } from "./Screens/Rankings";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-const Screen = () => {
-  const Tab = createBottomTabNavigator();
+// const Screen = () => {
+//   const Tab = createBottomTabNavigator();
+//   return (
+//     <Tab.Navigator
+//       initialRouteName="PlayersList"
+//       screenOptions={{ headerShown: false }}
+//     >
+//       <Tab.Screen
+//         name="PlayersList"
+//         component={PlayersList}
+//         options={{
+//           title: "MatchSettings",
+//           // tabBarIcon: ({size,color}) =>(
+//           //   <MaterialCommunityIcons name="home" size={size} color={color}/>
+//           // )
+//         }}
+//       />
+//       <Tab.Screen
+//         name="MatchSettings"
+//         component={MatchSettings}
+//         options={{
+//           title: "PlayersList",
+//           // tabBarIcon: ({size,color}) =>(
+//           //   <MaterialCommunityIcons name="home" size={size} color={color}/>
+//           // )
+//         }}
+//       />
+//     </Tab.Navigator>
+//   );
+// };
+
+const Stack = createNativeStackNavigator();
+export const Navigation = () => {
   return (
-    <Tab.Navigator
-      initialRouteName="PlayersList"
-      screenOptions={{ headerShown: false }}
-    >
-      <Tab.Screen
-        name="PlayersList"
-        component={PlayersList}
-        options={{
-          title: "MatchSettings",
-          // tabBarIcon: ({size,color}) =>(
-          //   <MaterialCommunityIcons name="home" size={size} color={color}/>
-          // )
-        }}
+    <Stack.Navigator initialRouteName="PlayersList">
+      <Stack.Screen
+        options={{ animation: "flip" }}
+        name="Finances"
+        component={Finances}
       />
-      <Tab.Screen
+      <Stack.Screen
+        options={{ animation: "flip" }}
         name="MatchSettings"
         component={MatchSettings}
-        options={{
-          title: "PlayersList",
-          // tabBarIcon: ({size,color}) =>(
-          //   <MaterialCommunityIcons name="home" size={size} color={color}/>
-          // )
-        }}
       />
-    </Tab.Navigator>
-  );
-};
-
-export const Navigation = () => {
-  const Stack = createNativeStackNavigator();
-
-  return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="PlayersList"
-        screenOptions={{
-          headerTintColor: "white",
-          headerStyle: { backgroundColor: "red" },
-        }}
-      >
-        <Stack.Screen
-          options={{ animation: "flip" }}
-          name="Finances"
-          component={Finances}
-        />
-        <Stack.Screen
-          options={{ animation: "flip" }}
-          name="MatchSettings"
-          component={MatchSettings}
-        />
-        <Stack.Screen
-          options={{ animation: "flip" }}
-          name="PlayersList"
-          component={PlayersList}
-        />
-        <Stack.Screen
-          options={{ animation: "flip" }}
-          name="Profile"
-          component={Profile}
-        />
-        <Stack.Screen
-          options={{ animation: "flip", gestureEnabled: true }}
-          name="Rankings"
-          component={Rankings}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+      <Stack.Screen
+        options={{ animation: "flip" }}
+        name="PlayersList"
+        component={PlayersList}
+      />
+      <Stack.Screen
+        options={{ animation: "flip" }}
+        name="Profile"
+        component={Profile}
+      />
+      <Stack.Screen
+        options={{ animation: "flip", gestureEnabled: true }}
+        name="Rankings"
+        component={Rankings}
+      />
+    </Stack.Navigator>
   );
 };
