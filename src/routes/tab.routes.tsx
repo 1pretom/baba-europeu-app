@@ -11,7 +11,7 @@ const Tab = createBottomTabNavigator();
 
 export const TabRoutes = () => {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: true }}>
+    <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen
         name="Finances"
         component={Finances}
