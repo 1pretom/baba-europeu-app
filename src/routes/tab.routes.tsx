@@ -12,16 +12,16 @@ const Tab = createBottomTabNavigator();
 export const TabRoutes = () => {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
-      {/* <Tab.Screen
+      <Tab.Screen
         name="Finances"
         component={Finances}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Feather name="watch" color={color} size={size} />
+            <Feather name="dollar-sign" color={color} size={size} />
           ),
           tabBarLabel: "Finanças",
         }}
-      /> */}
+      />
       <Tab.Screen
         name="MatchSettings"
         component={MatchSettings}

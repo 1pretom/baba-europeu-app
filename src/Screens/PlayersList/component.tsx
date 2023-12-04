@@ -17,3 +17,4 @@ export const PlayersList = () => {
     </SafeAreaView>
   );
 };
+export default PlayersList;
