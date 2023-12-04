@@ -7,3 +7,4 @@ export const Finances = () => {
     </View>
   );
 };
+export default Finances;
