@@ -12,15 +12,16 @@ const Tab = createBottomTabNavigator();
 export const TabRoutes = () => {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Finances"
         component={Finances}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Feather name="watch" color={color} size={size} />
           ),
+          tabBarLabel: "Finanças",
         }}
-      />
+      /> */}
       <Tab.Screen
         name="MatchSettings"
         component={MatchSettings}
@@ -28,6 +29,7 @@ export const TabRoutes = () => {
           tabBarIcon: ({ color, size }) => (
             <Feather name="settings" color={color} size={size} />
           ),
+          tabBarLabel: "Configurações da partida",
         }}
       />
       <Tab.Screen
@@ -35,8 +37,9 @@ export const TabRoutes = () => {
         component={PlayersList}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Feather name='users' color={color} size={size} />
+            <Feather name="users" color={color} size={size} />
           ),
+          tabBarLabel: "Lista de jogadores",
         }}
       />
       <Tab.Screen
@@ -46,6 +49,7 @@ export const TabRoutes = () => {
           tabBarIcon: ({ color, size }) => (
             <Feather name="user" color={color} size={size} />
           ),
+          tabBarLabel: "Perfil",
         }}
       />
       <Tab.Screen
@@ -55,6 +59,7 @@ export const TabRoutes = () => {
           tabBarIcon: ({ color, size }) => (
             <Feather name="radio" color={color} size={size} />
           ),
+          tabBarLabel: "Rankings",
         }}
       />
     </Tab.Navigator>
