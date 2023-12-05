@@ -1,16 +1,13 @@
 import React from "react";
 import { View, Text, Image, SafeAreaView } from "react-native";
-import { styles } from "./styles";
-import {TITLE_TEXT} from './constants'
+import * as S from "./styles";
+import { TITLE_TEXT } from "./constants";
 
 export const Header = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <Image
-        source={require("./../../../assets/baba-logo.png")}
-        style={styles.logo}
-      />
-      <Text style={styles.title}>{TITLE_TEXT}</Text>
-    </SafeAreaView>
+    <S.Container>
+      <S.Image source={require("@assets/baba-logo.png")} />
+      <S.Text>{TITLE_TEXT}</S.Text>
+    </S.Container>
   );
 };
