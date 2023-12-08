@@ -11,6 +11,7 @@ import {
 } from "@expo-google-fonts/roboto";
 import { Loading } from "@components/ActivityIndicator";
 import { StatusBar } from "react-native";
+import { Header } from "@components/Header";
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
@@ -23,6 +24,8 @@ export default function App() {
           backgroundColor="transparent"
           translucent
         />
+      <Header />
+
         {fontsLoaded ? <Routes /> : <Loading />}
       </S.Container>
     </ThemeProvider>

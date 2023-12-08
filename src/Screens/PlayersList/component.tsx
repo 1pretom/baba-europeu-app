@@ -8,8 +8,6 @@ import * as S from "./styles";
 export const PlayersList = () => {
   return (
     <S.Container>
-      <Header />
-      <Loading />
       <NextFut />
 
       <StatusBar style="auto" />
