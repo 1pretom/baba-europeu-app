@@ -34,3 +34,11 @@ export const Input = styled.TextInput`
   text-align: center;
   border-radius: 12px;
 `;
+
+export const PickerView = styled.View`
+  background-color: ${({ theme }) => theme.COLORS.RED};
+`;
+
+export const Content = styled.View`
+  align-items: center;
+`;

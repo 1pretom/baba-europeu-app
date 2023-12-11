@@ -10,7 +10,7 @@ export const Players = ({ index, name, onRemove }: TPlayers) => {
         {index + 1} - {name}
       </S.Name>
       <S.Button onPress={onRemove}>
-        <S.TrashButton>{REMOVE_NAME}</S.TrashButton>
+        <S.TrashButton />
       </S.Button>
     </S.Container>
   );
