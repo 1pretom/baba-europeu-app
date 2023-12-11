@@ -1,16 +1,7 @@
 import React, { useState } from "react";
-import {
-  FlatList,
-  View,
-  Text,
-  TextInput,
-  Button,
-  TouchableWithoutFeedback,
-  Alert,
-  TouchableOpacity,
-} from "react-native";
+import { FlatList, TouchableWithoutFeedback, Alert } from "react-native";
 import { Players } from "../Players/component";
-import { styles } from "./styles";
+import * as S from "./styles";
 import {
   ALERT_MESSAGE,
   ALERT_TITLE,
@@ -28,7 +19,7 @@ export const NextFut = () => {
 
   const handleAddPlayer = () => {
     if (players.includes(playerName)) {
-      return alert(`${playerName} ${ALREADY_ADDED}`);
+      return Alert.alert(`${ALERT_TITLE}`, `${playerName} ${ALREADY_ADDED}`);
     } else if (playerName.trim() !== "") {
       setPlayers([...players, playerName]);
       setPlayerName("");
@@ -62,47 +53,40 @@ export const NextFut = () => {
   };
 
   return (
-    <TouchableWithoutFeedback>
-      <View style={styles.container}>
-        <FlatList
-          data={players}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item, index }) => (
-            <Players
-              key={item}
-              name={item}
-              onRemove={() => handleRemovePlayer(item)}
-              index={index}
-            />
-          )}
-        />
+    <S.Container>
+      <FlatList
+        data={players}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item, index }) => (
+          <Players
+            key={item}
+            name={item}
+            onRemove={() => handleRemovePlayer(item)}
+            index={index}
+          />
+        )}
+      />
 
-        <Text>{PRESENCE_LIST}</Text>
-        <TextInput
-          style={styles.input}
-          placeholder={INSERT_NAME}
-          value={playerName}
-          onChangeText={setPlayerName}
-          onSubmitEditing={handleAddPlayer}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Quantidade de jogadores por time"
-          keyboardType="numeric"
-          value={playersPerTeam.toString()}
-          onChangeText={(text) => setPlayersPerTeam(parseInt(text, 10))}
-        />
+      <S.Name>{PRESENCE_LIST}</S.Name>
+      <S.Input
+        placeholder={INSERT_NAME}
+        value={playerName}
+        onChangeText={setPlayerName}
+        onSubmitEditing={handleAddPlayer}
+      />
+      <S.Input
+        placeholder="Quantidade de jogadores por time"
+        keyboardType="numeric"
+        value={playersPerTeam.toString()}
+        onChangeText={(text) => setPlayersPerTeam(parseInt(text, 10))}
+      />
 
-        <TouchableOpacity style={styles.button} onPress={handleAddPlayer}>
-          <Text style={styles.buttonText}>{BUTTON_NAME}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => handleSortPlayers}
-        >
-          <Text style={styles.buttonText}>{SORT_PLAYERS}</Text>
-        </TouchableOpacity>
-      </View>
-    </TouchableWithoutFeedback>
+      <S.Button onPress={handleAddPlayer}>
+        <S.ButtonText>{BUTTON_NAME}</S.ButtonText>
+      </S.Button>
+      <S.Button onPress={handleSortPlayers}>
+        <S.ButtonText>{SORT_PLAYERS}</S.ButtonText>
+      </S.Button>
+    </S.Container>
   );
 };
