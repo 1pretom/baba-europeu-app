@@ -36,5 +36,9 @@ export const Input = styled.TextInput`
 `;
 
 export const PickerView = styled.View`
-  background-color: aliceblue;
+  background-color: ${({ theme }) => theme.COLORS.RED};
+`;
+
+export const Content = styled.View`
+  align-items: center;
 `;
