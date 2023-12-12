@@ -1,8 +1,6 @@
-//faz o não, não ser clicável
-//fazer o sim ser a única opção possível e direcioar pra um vídeo
-
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Linking } from "react-native";
+import { Linking } from "react-native";
+import * as S from './styles';
 
 const PedidoDeNamoro = () => {
   const [noButtonPosition, setNoButtonPosition] = useState({
@@ -11,47 +9,29 @@ const PedidoDeNamoro = () => {
   });
 
   const handleNoButtonClick = () => {
-    const newTop = Math.random() * 500; // Gerar uma posição top aleatória
-    const newLeft = Math.random() * 300; // Gerar uma posição left aleatória
+    const newTop = Math.random() * 500;
+    const newLeft = Math.random() * 300;
     setNoButtonPosition({ top: newTop, left: newLeft });
   };
 
   const handleSimButtonClick = () => {
-    // Abrir um link para um vídeo (substitua o URL pelo seu link desejado)
-    Linking.openURL("https://www.youtube.com/watch?v=SEF0-U5KxW4");
+    Linking.openURL("https://www.youtube.com/watch?v=ZbZSe6N_BXs");
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <TouchableOpacity
-        style={{
-          backgroundColor: "red",
-          padding: 20,
-          borderRadius: 10,
-          position: "absolute",
-          top: noButtonPosition.top,
-          left: noButtonPosition.left,
-        }}
+    <S.Container>
+      <S.NoButton
         onPress={handleNoButtonClick}
+        top={noButtonPosition.top}
+        left={noButtonPosition.left}
       >
-        <Text style={{ color: "white" }}>Não</Text>
-      </TouchableOpacity>
+        <S.ButtonText>Não</S.ButtonText>
+      </S.NoButton>
 
-      <TouchableOpacity
-        style={{
-          backgroundColor: "green",
-          padding: 20,
-          paddingTop: 20,
-
-          borderRadius: 10,
-          margin: 10,
-          marginTop: 10,
-        }}
-        onPress={handleSimButtonClick}
-      >
-        <Text style={{ color: "white" }}>Sim</Text>
-      </TouchableOpacity>
-    </View>
+      <S.SimButton onPress={handleSimButtonClick}>
+        <S.ButtonText>SIIIM</S.ButtonText>
+      </S.SimButton>
+    </S.Container>
   );
 };
 
