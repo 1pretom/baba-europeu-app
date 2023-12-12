@@ -1,8 +1,8 @@
 import { ClassicCard } from "@components/ClassicCard";
 import * as S from "./styles";
 import { useState } from "react";
-import { FlatList } from "react-native";
 import { Highlight } from "@components/Highlight";
+import { FlashList } from "@shopify/flash-list";
 
 export const ClassicScreen = () => {
   const [classicTeam, setClassicTeam] = useState<string[]>(["Cahia", "Leão"]);
@@ -11,7 +11,7 @@ export const ClassicScreen = () => {
     <S.Container>
       <Highlight title="Dia de clássico" subtitle="Bote se vc é barril" />
 
-      <FlatList
+      <FlashList
         data={classicTeam}
         keyExtractor={(item) => item}
         renderItem={({ item }) => {

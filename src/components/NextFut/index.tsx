@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, Alert, Text, View } from "react-native";
+import { Alert, Text, View } from "react-native";
 import { Players } from "../Players/component";
 import * as S from "./styles";
 import {
@@ -12,6 +12,7 @@ import {
   SORT_PLAYERS,
 } from "./constants";
 import { Picker } from "@react-native-picker/picker";
+import { FlashList } from "@shopify/flash-list";
 
 export const NextFut = () => {
   const [players, setPlayers] = useState<string[]>([]);
@@ -70,7 +71,7 @@ export const NextFut = () => {
         />
       </S.Content>
 
-      <FlatList
+      <FlashList
         data={players}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item, index }) => (
