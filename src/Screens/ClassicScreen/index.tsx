@@ -3,21 +3,27 @@ import * as S from "./styles";
 import { useState } from "react";
 import { Highlight } from "@components/Highlight";
 import { FlashList } from "@shopify/flash-list";
+import { FlatList } from "react-native";
+import { ListEmpty } from "@components/ListEmpty";
 
 export const ClassicScreen = () => {
-  const [classicTeam, setClassicTeam] = useState<string[]>(["Cahia", "Leão"]);
+  const [classicTeam, setClassicTeam] = useState<string[]>([]);
 
   return (
     <S.Container>
       <Highlight title="Dia de clássico" subtitle="Bote se vc é barril" />
 
-      <FlashList
+      <FlatList
         data={classicTeam}
         keyExtractor={(item) => item}
         renderItem={({ item }) => {
           console.log("Item:", item);
           return <ClassicCard title={item} />;
         }}
+        contentContainerStyle={classicTeam.length === 0 && { flex: 1 }}
+        ListEmptyComponent={() => (
+          <ListEmpty message={"Como assim não tem clássico?"} />
+        )}
       />
 
       {/* <ClassicCard title="Cahia" />
