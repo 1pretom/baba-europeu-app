@@ -1,10 +1,10 @@
 import { View, Text } from "react-native";
+import * as S from "./styles";
 
 export const MatchSettings = () => {
   return (
-    <View>
-      <Text>settings</Text>
-    </View>
+    <S.Container>
+      <S.TextInsideImage>Configurações da partida</S.TextInsideImage>
+    </S.Container>
   );
 };
-export default MatchSettings;
