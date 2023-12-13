@@ -5,6 +5,7 @@ import { Highlight } from "@components/Highlight";
 import { FlashList } from "@shopify/flash-list";
 import { FlatList } from "react-native";
 import { ListEmpty } from "@components/ListEmpty";
+import { Button } from "@components/Button";
 
 export const ClassicScreen = () => {
   const [classicTeam, setClassicTeam] = useState<string[]>([]);
@@ -25,7 +26,7 @@ export const ClassicScreen = () => {
           <ListEmpty message={"Como assim não tem clássico?"} />
         )}
       />
-
+      <Button title={"Criar time no clássico"} />
       {/* <ClassicCard title="Cahia" />
       <ClassicCard title="Leão" /> */}
     </S.Container>

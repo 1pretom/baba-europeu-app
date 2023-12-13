@@ -14,13 +14,13 @@ export const TabRoutes = () => {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen
-        name="Finances"
-        component={Finances}
+        name="PlayersList"
+        component={PlayersList}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Feather name="dollar-sign" color={color} size={size} />
+            <Feather name="users" color={color} size={size} />
           ),
-          tabBarLabel: "Finanças",
+          tabBarLabel: "Lista de jogadores",
         }}
       />
       <Tab.Screen
@@ -34,13 +34,13 @@ export const TabRoutes = () => {
         }}
       />
       <Tab.Screen
-        name="PlayersList"
-        component={PlayersList}
+        name="Finances"
+        component={Finances}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Feather name="users" color={color} size={size} />
+            <Feather name="heart" color={color} size={size} />
           ),
-          tabBarLabel: "Lista de jogadores",
+          tabBarLabel: "Love",
         }}
       />
       <Tab.Screen
@@ -68,7 +68,7 @@ export const TabRoutes = () => {
         component={ClassicScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Feather name="radio" color={color} size={size} />
+            <Feather name="dollar-sign" color={color} size={size} />
           ),
           tabBarLabel: "ClassicScreen",
         }}
