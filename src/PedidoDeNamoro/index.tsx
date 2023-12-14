@@ -15,7 +15,7 @@ const PedidoDeNamoro = () => {
   };
 
   const handleSimButtonClick = () => {
-    Linking.openURL("https://www.youtube.com/watch?v=ZbZSe6N_BXs");
+    Linking.openURL("https://www.youtube.com/watch?v=e0_KXb2lTWA");
   };
 
   return (
