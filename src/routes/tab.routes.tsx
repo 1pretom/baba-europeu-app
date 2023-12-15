@@ -7,6 +7,8 @@ import { Profile } from "../Screens/Profile";
 import { Rankings } from "../Screens/Rankings";
 import { Feather } from "@expo/vector-icons";
 import { ClassicScreen } from "../Screens/ClassicScreen/index";
+import { NewClassicTeam } from "../Screens/ClassicTeam";
+import { ClassicPlayers } from "../Screens/ClassicPlayers";
 
 const Tab = createBottomTabNavigator();
 
@@ -64,13 +66,13 @@ export const TabRoutes = () => {
         }}
       />
       <Tab.Screen
-        name="ClassicScreen"
-        component={ClassicScreen}
+        name="NewClassicTeam"
+        component={ClassicPlayers}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Feather name="dollar-sign" color={color} size={size} />
           ),
-          tabBarLabel: "ClassicScreen",
+          tabBarLabel: "NewClassicTeam",
         }}
       />
     </Tab.Navigator>
