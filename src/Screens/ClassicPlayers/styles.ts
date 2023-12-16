@@ -7,7 +7,7 @@ export const Container = styled.View`
 `;
 
 export const Fomr = styled.View`
-  width: 80%;
+  width: 100%;
   background-color: ${({ theme }) => theme.COLORS.GRAY_700};
   flex-direction: row-reverse;
   justify-content: center;
