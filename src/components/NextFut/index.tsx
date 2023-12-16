@@ -13,6 +13,8 @@ import {
 } from "./constants";
 import { Picker } from "@react-native-picker/picker";
 import { FlashList } from "@shopify/flash-list";
+import { Input } from "@components/Input";
+import { ButtonIcon } from "@components/ButtonIcon";
 
 export const NextFut = () => {
   const [players, setPlayers] = useState<string[]>([]);
@@ -63,12 +65,16 @@ export const NextFut = () => {
     <S.Container>
       <S.Content>
         <S.Name>{PRESENCE_LIST}</S.Name>
-        <S.Input
-          placeholder={INSERT_NAME}
-          value={playerName}
-          onChangeText={setPlayerName}
-          onSubmitEditing={handleAddPlayer}
-        />
+        <S.Fomr>
+          <ButtonIcon icon="add" type="PRIMARY" onPress={handleAddPlayer} />
+
+          <Input
+            placeholder={INSERT_NAME}
+            value={playerName}
+            onChangeText={setPlayerName}
+            onSubmitEditing={handleAddPlayer}
+          />
+        </S.Fomr>
       </S.Content>
 
       <FlashList

@@ -23,17 +23,7 @@ export const ButtonText = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
 `;
 
-export const Input = styled.TextInput`
-  height: 40px;
-  width: 200px;
-  border-color: red;
-  border-width: 0.5px;
-  margin-bottom: 5px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border-radius: 12px;
-`;
+
 
 export const PickerView = styled.View`
   background-color: ${({ theme }) => theme.COLORS.RED};
@@ -41,4 +31,12 @@ export const PickerView = styled.View`
 
 export const Content = styled.View`
   align-items: center;
+`;
+
+export const Fomr = styled.View`
+  width: 100%;
+  background-color: ${({ theme }) => theme.COLORS.GRAY_700};
+  flex-direction: row-reverse;
+  justify-content: center;
+  border-radius: 6px;
 `;
