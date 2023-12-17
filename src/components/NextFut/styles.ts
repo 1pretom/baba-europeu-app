@@ -23,8 +23,6 @@ export const ButtonText = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
 `;
 
-
-
 export const PickerView = styled.View`
   background-color: ${({ theme }) => theme.COLORS.RED};
 `;
@@ -35,7 +33,7 @@ export const Content = styled.View`
 
 export const Fomr = styled.View`
   width: 100%;
-  background-color: ${({ theme }) => theme.COLORS.GRAY_700};
+  background-color: ${({ theme }) => theme.COLORS.BLUE_300};
   flex-direction: row-reverse;
   justify-content: center;
   border-radius: 6px;

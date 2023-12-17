@@ -7,7 +7,7 @@ export const ClassicPlayers = () => {
   return (
     <S.Container>
       <Highlight
-        title="nombre de lo time"
+        title="nombre del equipo"
         subtitle="
         Agregar jugadores y separar equipos"
       />
