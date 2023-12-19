@@ -5,6 +5,7 @@ import { Input } from "@components/Input";
 import { Filter } from "@components/Filter";
 import { FlashList } from "@shopify/flash-list";
 import { useState } from "react";
+import { ClassicPlayerCard } from "@components/ClassicPlayerCard";
 export const ClassicPlayers = () => {
   const [team, setTeam] = useState<string>();
   const [players, setPlayers] = useState<string[]>();
@@ -35,7 +36,13 @@ export const ClassicPlayers = () => {
         />
         <S.NumbersOfPlayers>{players?.length}</S.NumbersOfPlayers>
       </S.HeaderList>
-
+      <FlashList
+        data={players}
+        keyExtractor={(item) => item}
+        renderItem={({ item }) => (
+          <ClassicPlayerCard name={item} onRemove={() => {}} />
+        )}
+      />
     </S.Container>
   );
 };
