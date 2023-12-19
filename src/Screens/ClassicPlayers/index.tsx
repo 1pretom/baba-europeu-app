@@ -16,10 +16,10 @@ export const ClassicPlayers = () => {
         subtitle="
         Agregar jugadores y separar equipos"
       />
-      <S.Fomr>
+      <S.Fomrs>
         <Input placeholder="Nombre de la persona" autoCorrect={false} />
         <ButtonIcon icon="add" type="PRIMARY" />
-      </S.Fomr>
+      </S.Fomrs>
       <S.HeaderList>
         <FlashList
           data={["Time A", "Time B"]}
@@ -36,7 +36,6 @@ export const ClassicPlayers = () => {
         <S.NumbersOfPlayers>{players?.length}</S.NumbersOfPlayers>
       </S.HeaderList>
 
-      <Filter title={"Time A"} />
     </S.Container>
   );
 };

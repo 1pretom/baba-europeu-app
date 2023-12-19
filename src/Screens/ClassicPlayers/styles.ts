@@ -6,7 +6,7 @@ export const Container = styled.View`
   padding: 16px;
 `;
 
-export const Fomr = styled.View`
+export const Fomrs = styled.View`
   width: 100%;
   background-color: ${({ theme }) => theme.COLORS.BLUE_300};
   flex-direction: row-reverse;
