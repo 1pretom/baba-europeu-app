@@ -40,7 +40,7 @@ export const TabRoutes = () => {
         component={Finances}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Feather name="heart" color={color} size={size} />
+            <Feather name="dollar-sign" color={color} size={size} />
           ),
           tabBarLabel: "Love",
         }}
@@ -63,16 +63,6 @@ export const TabRoutes = () => {
             <Feather name="radio" color={color} size={size} />
           ),
           tabBarLabel: "Rankings",
-        }}
-      />
-      <Tab.Screen
-        name="NewClassicTeam"
-        component={ClassicPlayers}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Feather name="dollar-sign" color={color} size={size} />
-          ),
-          tabBarLabel: "NewClassicTeam",
         }}
       />
     </Tab.Navigator>
