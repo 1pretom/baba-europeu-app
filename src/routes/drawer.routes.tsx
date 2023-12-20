@@ -4,7 +4,6 @@ import { TabRoutes } from "./tab.routes";
 import { StackRoutes } from "./stack.routes";
 import { ClassicScreen } from "../Screens/ClassicScreen/index";
 
-
 const Drawer = createDrawerNavigator();
 
 export const DrawerRoutes = () => {
@@ -21,13 +20,13 @@ export const DrawerRoutes = () => {
         }}
       />
       <Drawer.Screen
-        name="Rankings"
+        name="Classicos"
         component={StackRoutes}
         options={{
           drawerIcon: ({ color, size }) => (
-            <Feather name="radio" color={color} size={size} />
+            <Feather name="pocket" color={color} size={size} />
           ),
-          drawerLabel: "Rankings",
+          drawerLabel: "Classicos",
         }}
       />
     </Drawer.Navigator>
