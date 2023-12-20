@@ -6,8 +6,8 @@ export const Container = styled(TouchableOpacity)<TButtonType>`
   flex: 1;
   min-height: 60px;
   max-height: 60px;
-  max-width: 70%;
-  min-width: 70%;
+  max-width: 100%;
+  min-width: 100%;
   background-color: ${({ theme, type }) =>
     type === "PRIMARY" ? theme.COLORS.GREEN_700 : theme.COLORS.RED_DARK};
   border-radius: 6px;

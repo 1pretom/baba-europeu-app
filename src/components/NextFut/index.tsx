@@ -6,7 +6,6 @@ import {
   ALERT_MESSAGE,
   ALERT_TITLE,
   ALREADY_ADDED,
-  BUTTON_NAME,
   INSERT_NAME,
   PRESENCE_LIST,
   SORT_PLAYERS,
@@ -15,6 +14,7 @@ import { Picker } from "@react-native-picker/picker";
 import { FlashList } from "@shopify/flash-list";
 import { Input } from "@components/Input";
 import { ButtonIcon } from "@components/ButtonIcon";
+import { Button } from "@components/Button";
 
 export const NextFut = () => {
   const [players, setPlayers] = useState<string[]>([]);
@@ -122,13 +122,7 @@ export const NextFut = () => {
           ))}
         </Picker>
       </S.PickerView>
-
-      <S.Button onPress={handleAddPlayer}>
-        <S.ButtonText>{BUTTON_NAME}</S.ButtonText>
-      </S.Button>
-      <S.Button onPress={handleSortPlayers}>
-        <S.ButtonText>{SORT_PLAYERS}</S.ButtonText>
-      </S.Button>
+      <Button title={SORT_PLAYERS} type="PRIMARY" onPress={handleSortPlayers} />
 
       {teams.length > 0 && (
         <S.Content>
