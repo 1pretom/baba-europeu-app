@@ -6,6 +6,9 @@ import { Filter } from "@components/Filter";
 import { FlashList } from "@shopify/flash-list";
 import { useState } from "react";
 import { ClassicPlayerCard } from "@components/ClassicPlayerCard";
+import { ListEmpty } from "@components/ListEmpty";
+import { FlatList } from "react-native";
+import { Button } from "@components/Button";
 export const ClassicPlayers = () => {
   const [team, setTeam] = useState<string>();
   const [players, setPlayers] = useState<string[]>();
@@ -36,13 +39,20 @@ export const ClassicPlayers = () => {
         />
         <S.NumbersOfPlayers>{players?.length}</S.NumbersOfPlayers>
       </S.HeaderList>
-      <FlashList
+      <FlatList
         data={players}
         keyExtractor={(item) => item}
         renderItem={({ item }) => (
           <ClassicPlayerCard name={item} onRemove={() => {}} />
         )}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={[
+          { paddingBottom: 100 },
+          players?.length === 0 && { flex: 1 },
+        ]}
+        ListEmptyComponent={() => <ListEmpty message="Oxe, não tem ninguém?" />}
       />
+      <Button title="Remover Time" type="SECONDARY" />
     </S.Container>
   );
 };
