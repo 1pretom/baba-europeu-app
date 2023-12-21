@@ -1,7 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Rankings } from "../Screens/Rankings";
-import { NewClassicTeam } from "../Screens/ClassicTeam";
+import { ClassicTeam } from "../Screens/ClassicTeam";
 import { ClassicScreen } from "../Screens/ClassicScreen";
 import { ClassicPlayers } from "../Screens/ClassicPlayers";
 
@@ -21,7 +21,7 @@ export const StackRoutes = () => {
       <Stack.Screen
         options={{ animation: "flip", gestureEnabled: true }}
         name="NewClassicTeam"
-        component={NewClassicTeam}
+        component={ClassicTeam}
       />
       <Stack.Screen
         options={{ animation: "flip", gestureEnabled: true }}

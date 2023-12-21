@@ -4,7 +4,7 @@ export declare global {
       ClassicScreen: undefined;
       NewClassicTeam: undefined;
       ClassicPlayers: {
-        team: string;
+        classicTeam: string;
       };
     }
   }
