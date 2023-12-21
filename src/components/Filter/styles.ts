@@ -20,7 +20,6 @@ export const Title = styled.Text`
   ${({ theme }) =>
     css`
       font-family: ${theme.FONT_FAMILY.BOLD};
-      border: ${theme.FONT_SIZE.SM}px;
-      border: ${theme.COLORS.WHITE};
+      font-size: ${theme.FONT_SIZE.SM}px;
     `}
 `;

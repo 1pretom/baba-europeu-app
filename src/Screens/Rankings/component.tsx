@@ -1,14 +1,17 @@
+import { Button } from "@components/Button";
+import { useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { View, Text, Button } from "react-native";
+import { View, Text } from "react-native";
 
-export const Rankings = ({ navigation }: any) => {
+export const Rankings = () => {
+  const navigation = useNavigation();
+  const handleOnPressProfile = () => {
+    navigation.navigate("Profile");
+  };
   return (
     <View>
       <Text>rankings</Text>
-      <Button
-        title="Go to Profile"
-        onPress={() => navigation.navigate("Profile")}
-      />
+      <Button title="Go to Profile" onPress={handleOnPressProfile} />
       <Button
         title="Go to PlayersList"
         onPress={() => navigation.navigate("PlayersList")}

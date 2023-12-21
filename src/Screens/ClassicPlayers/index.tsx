@@ -9,14 +9,18 @@ import { ClassicPlayerCard } from "@components/ClassicPlayerCard";
 import { ListEmpty } from "@components/ListEmpty";
 import { FlatList } from "react-native";
 import { Button } from "@components/Button";
+import { useRoute } from "@react-navigation/native";
+import { TRouteParams } from "./type";
 export const ClassicPlayers = () => {
   const [team, setTeam] = useState<string>();
   const [players, setPlayers] = useState<string[]>();
+  const route = useRoute();
+  const { classicTeam } = route.params as TRouteParams;
 
   return (
     <S.Container>
       <Highlight
-        title="nombre del equipo"
+        title={classicTeam}
         subtitle="
         Agregar jugadores y separar equipos"
       />
