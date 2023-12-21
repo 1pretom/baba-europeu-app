@@ -10,18 +10,13 @@ const Stack = createNativeStackNavigator();
 export const StackRoutes = () => {
   return (
     <Stack.Navigator
-      initialRouteName="PlayersList"
+      initialRouteName="ClassicScreen"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen
         options={{ animation: "flip", gestureEnabled: true }}
         name="ClassicScreen"
         component={ClassicScreen}
-      />
-      <Stack.Screen
-        options={{ animation: "flip", gestureEnabled: true }}
-        name="Rankings"
-        component={Rankings}
       />
       <Stack.Screen
         options={{ animation: "flip", gestureEnabled: true }}

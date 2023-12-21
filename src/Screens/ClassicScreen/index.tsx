@@ -6,9 +6,14 @@ import { FlashList } from "@shopify/flash-list";
 import { FlatList } from "react-native";
 import { ListEmpty } from "@components/ListEmpty";
 import { Button } from "@components/Button";
+import { useNavigation } from "@react-navigation/native";
 
 export const ClassicScreen = () => {
   const [classicTeam, setClassicTeam] = useState<string[]>([]);
+  const navigation = useNavigation();
+  const handleNewClassic = () => {
+    navigation.navigate("NewClassicTeam");
+  };
 
   return (
     <S.Container>
@@ -26,9 +31,7 @@ export const ClassicScreen = () => {
           <ListEmpty message={"Como assim não tem clássico?"} />
         )}
       />
-      <Button title={"Criar time no clássico"} />
-      {/* <ClassicCard title="Cahia" />
-      <ClassicCard title="Leão" /> */}
+      <Button title={"Criar time no clássico"} onPress={handleNewClassic} />
     </S.Container>
   );
 };
