@@ -1,12 +1,13 @@
 import { ClassicCard } from "@components/ClassicCard";
 import * as S from "./styles";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Highlight } from "@components/Highlight";
 import { FlashList } from "@shopify/flash-list";
 import { FlatList } from "react-native";
 import { ListEmpty } from "@components/ListEmpty";
 import { Button } from "@components/Button";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { classicGetAll } from "@storage/classic/classicGetAll";
 
 export const ClassicScreen = () => {
   const [classicTeam, setClassicTeam] = useState<string[]>([]);
@@ -14,6 +15,22 @@ export const ClassicScreen = () => {
   const handleNewClassic = () => {
     navigation.navigate("NewClassicTeam");
   };
+
+  const fetchClassicTeams = async () => {
+    try {
+      const data = await classicGetAll();
+      setClassicTeam(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+
+      fetchClassicTeams();
+    }, [])
+  );
 
   return (
     <S.Container>

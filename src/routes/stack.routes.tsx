@@ -1,9 +1,9 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Rankings } from "../Screens/Rankings";
-import { ClassicTeam } from "../Screens/ClassicTeam";
-import { ClassicScreen } from "../Screens/ClassicScreen";
-import { ClassicPlayers } from "../Screens/ClassicPlayers";
+import { ClassicPlayers } from "@screens/ClassicPlayers";
+import { ClassicScreen } from "@screens/ClassicScreen";
+import { ClassicTeam } from "@screens/ClassicTeam";
+
 
 const Stack = createNativeStackNavigator();
 

@@ -3,15 +3,17 @@ import { Highlight } from "@components/Highlight";
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
 import { useNavigation } from "@react-navigation/native";
-import { Header } from "@components/Header";
 import { useState } from "react";
+import { classicCreate } from "@storage/classic/classicCreate";
 export const ClassicTeam = () => {
   const [classicTeam, setClassicTeam] = useState("");
 
   const navigation = useNavigation();
-  const handleNewTeam = () => {
+  const handleNewClassicTeam = async () => {
+    await classicCreate(classicTeam);
     navigation.navigate("ClassicPlayers", { classicTeam });
   };
+
   return (
     <S.Container>
       <S.Content>
@@ -23,7 +25,7 @@ export const ClassicTeam = () => {
         />
         <Button
           title="Criar"
-          onPress={handleNewTeam}
+          onPress={handleNewClassicTeam}
           style={{ marginTop: 20 }}
         />
       </S.Content>
