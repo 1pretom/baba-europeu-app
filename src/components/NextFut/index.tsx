@@ -35,15 +35,15 @@ export const NextFut = () => {
   const handleRemovePlayer = (name: string) => {
     Alert.alert(`${ALERT_TITLE}`, `${ALERT_MESSAGE} ${name}?`, [
       {
+        text: "Não",
+        style: "cancel",
+      },
+      {
         text: "Sim",
         onPress: () =>
           setPlayers((prevState) =>
             prevState.filter((player) => player !== name)
           ),
-      },
-      {
-        text: "Não",
-        style: "cancel",
       },
     ]);
   };
