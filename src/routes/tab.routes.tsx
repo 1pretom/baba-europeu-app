@@ -1,14 +1,11 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
 import { Finances } from "../Screens/Finances";
-import { MatchSettings } from "../Screens/MatchSettings";
-import { PlayersList } from "../Screens/PlayersList";
-import { Profile } from "../Screens/Profile";
-import { Rankings } from "../Screens/Rankings";
 import { Feather } from "@expo/vector-icons";
-import { ClassicScreen } from "../Screens/ClassicScreen/index";
-import { ClassicTeam } from "../Screens/ClassicTeam";
-import { ClassicPlayers } from "../Screens/ClassicPlayers";
+import { MatchSettings } from "@screens/MatchSettings";
+import { PlayersList } from "@screens/PlayersList";
+import { Profile } from "@screens/Profile";
+import { Rankings } from "@screens/Rankings";
+
 
 const Tab = createBottomTabNavigator();
 

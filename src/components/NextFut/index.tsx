@@ -78,7 +78,7 @@ export const NextFut = () => {
       </S.Content>
 
       <FlashList
-        estimatedListSize={{ height: 100, width: 100 }}
+        estimatedItemSize={50}
         data={players}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item, index }) => (

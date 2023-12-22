@@ -31,6 +31,7 @@ export const ClassicPlayers = () => {
       <S.HeaderList>
         <FlashList
           data={["Time A", "Time B"]}
+          estimatedItemSize={5}
           keyExtractor={(item) => item}
           renderItem={({ item }) => (
             <Filter

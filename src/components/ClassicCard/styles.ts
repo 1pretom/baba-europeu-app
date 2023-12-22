@@ -3,14 +3,13 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 
 export const Container = styled.TouchableOpacity`
-  width: 80%;
-  height: 10%;
+  width: 100%;
   background-color: ${({ theme }) => theme.COLORS.GRAY_500};
   border-radius: 6px;
   flex-direction: row;
   align-items: center;
-  padding: 24px;
-  margin-bottom: 12px;
+  padding: 10px;
+  margin-bottom: 10px;
 `;
 export const Title = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
@@ -20,8 +19,8 @@ export const Title = styled.Text`
 `;
 
 export const Icon = styled(SoccerBall).attrs(({ theme }) => ({
-  size: 32,
-  color: theme.COLORS.RED,
+  size: 30,
+  color: theme.COLORS.WHITE,
 }))`
-  margin-left: 20px;
+  margin-left: 5px;
 `;
