@@ -5,13 +5,29 @@ import { Input } from "@components/Input";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { classicCreate } from "@storage/classic/classicCreate";
+import { AppError } from "@utils/AppError";
+import { Alert } from "react-native";
 export const ClassicTeam = () => {
   const [classicTeam, setClassicTeam] = useState("");
 
   const navigation = useNavigation();
   const handleNewClassicTeam = async () => {
-    await classicCreate(classicTeam);
-    navigation.navigate("ClassicPlayers", { classicTeam });
+    try {
+      if (classicTeam.trim().length === 0) {
+        return Alert.alert(
+          "Novo time",
+          "Escreva o nome, não pode ficar vazio."
+        );
+      }
+      await classicCreate(classicTeam);
+      navigation.navigate("ClassicPlayers", { classicTeam });
+    } catch (error) {
+      if (error instanceof AppError) {
+        Alert.alert("Novo time", error.message);
+      }
+      Alert.alert("Novo time", "Não deu pra criar o time pro clássico.");
+      console.log(error);
+    }
   };
 
   return (

@@ -7,9 +7,9 @@ export const classicCreate = async (classicTeam: string) => {
   try {
     const storedClassicTeam = await classicGetAll();
     const classicTeamAlreadyExists = storedClassicTeam.includes(classicTeam);
-   if(classicTeamAlreadyExists){
-    throw new AppError("Esse time já existe, amigão.");
-   }
+    if (classicTeamAlreadyExists) {
+      throw new AppError("Esse time já existe, amigão.");
+    }
 
     const storage = JSON.stringify([...storedClassicTeam, classicTeam]);
     await AsyncStorage.setItem(CLASSIC_TEAMS_COLLECTION, storage);
