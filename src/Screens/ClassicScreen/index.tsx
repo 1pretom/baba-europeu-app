@@ -10,7 +10,7 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { classicGetAll } from "@storage/classic/classicGetAll";
 
 export const ClassicScreen = () => {
-  const [classicTeam, setClassicTeam] = useState<string[]>([]);
+  const [classicTeams, setClassicTeams] = useState<string[]>([]);
   const navigation = useNavigation();
   const handleNewClassic = () => {
     navigation.navigate("NewClassicTeam");
@@ -19,15 +19,18 @@ export const ClassicScreen = () => {
   const fetchClassicTeams = async () => {
     try {
       const data = await classicGetAll();
-      setClassicTeam(data);
+      setClassicTeams(data);
     } catch (error) {
       console.log(error);
     }
   };
 
+  const handleOpenClassicTeam = (classicTeam: string) => {
+    navigation.navigate("ClassicPlayers", { classicTeam });
+  };
+
   useFocusEffect(
     useCallback(() => {
-
       fetchClassicTeams();
     }, [])
   );
@@ -37,13 +40,18 @@ export const ClassicScreen = () => {
       <Highlight title="Dia de clássico" subtitle="Bote se vc é barril" />
 
       <FlatList
-        data={classicTeam}
+        data={classicTeams}
         keyExtractor={(item) => item}
         renderItem={({ item }) => {
           console.log("Item:", item);
-          return <ClassicCard title={item} />;
+          return (
+            <ClassicCard
+              title={item}
+              onPress={() => handleOpenClassicTeam(item)}
+            />
+          );
         }}
-        contentContainerStyle={classicTeam.length === 0 && { flex: 1 }}
+        contentContainerStyle={classicTeams.length === 0 && { flex: 1 }}
         ListEmptyComponent={() => (
           <ListEmpty message={"Como assim não tem clássico?"} />
         )}
