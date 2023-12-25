@@ -7,15 +7,50 @@ import { FlashList } from "@shopify/flash-list";
 import { useState } from "react";
 import { ClassicPlayerCard } from "@components/ClassicPlayerCard";
 import { ListEmpty } from "@components/ListEmpty";
-import { FlatList } from "react-native";
+import { Alert, FlatList } from "react-native";
 import { Button } from "@components/Button";
 import { useRoute } from "@react-navigation/native";
 import { TRouteParams } from "./type";
+import { AppError } from "@utils/AppError";
+import { playerAddByTeam } from "@storage/player/playerAddByTeam";
+import { playerGetByTeam } from "@storage/player/playerGetByTeam";
 export const ClassicPlayers = () => {
-  const [team, setTeam] = useState<string>();
-  const [players, setPlayers] = useState<string[]>();
+  const [newPlayerName, setNewPlayerName] = useState("");
+  const [team, setTeam] = useState();
+  const [players, setPlayers] = useState([]);
+
   const route = useRoute();
+
   const { classicTeam } = route.params as TRouteParams;
+
+  const handleAddPlayer = async () => {
+    if (newPlayerName.trim().length === 0) {
+      return Alert.alert("Novo Jogadô", "Oxe, tá vazio véi.");
+    }
+
+    const newPlayer = { 
+      name: newPlayerName, 
+      team, 
+    };
+
+    try {
+      await playerAddByTeam(newPlayer, classicTeam);
+      const players = await playerGetByTeam(classicTeam);
+      console.log(
+        "🚀 ~ file: index.tsx:34 ~ handleAddPlayer ~ team:",
+        newPlayer,
+        team,
+        players
+      );
+    } catch (error) {
+      if (error instanceof AppError) {
+        Alert.alert("Novo Jogadô", error.message);
+      } else {
+        console.log(error);
+        Alert.alert("Novo Jogadô", "Rapaz, revise as parada aí");
+      }
+    }
+  };
 
   return (
     <S.Container>
@@ -25,8 +60,12 @@ export const ClassicPlayers = () => {
         Agregar jugadores y separar equipos"
       />
       <S.Fomrs>
-        <Input placeholder="Nombre de la persona" autoCorrect={false} />
-        <ButtonIcon icon="add" type="PRIMARY" />
+        <Input
+          onChangeText={setNewPlayerName}
+          placeholder="Nombre de la persona"
+          autoCorrect={false}
+        />
+        <ButtonIcon icon="add" onPress={handleAddPlayer} />
       </S.Fomrs>
       <S.HeaderList>
         <FlashList
