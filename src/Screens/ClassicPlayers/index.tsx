@@ -4,7 +4,7 @@ import { ButtonIcon } from "@components/ButtonIcon";
 import { Input } from "@components/Input";
 import { Filter } from "@components/Filter";
 import { FlashList } from "@shopify/flash-list";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ClassicPlayerCard } from "@components/ClassicPlayerCard";
 import { ListEmpty } from "@components/ListEmpty";
 import { Alert, FlatList } from "react-native";
@@ -13,35 +13,36 @@ import { useRoute } from "@react-navigation/native";
 import { TRouteParams } from "./type";
 import { AppError } from "@utils/AppError";
 import { playerAddByTeam } from "@storage/player/playerAddByTeam";
-import { playerGetByTeam } from "@storage/player/playerGetByTeam";
+import { playerGetByTeamAndClassicTeam } from "@storage/player/playerGetByTeamAndClassicTeam";
+import { PlayerStorageDTO } from "@storage/player/PlayerStorageDTO";
+import { TextInput } from "react-native-gesture-handler";
 export const ClassicPlayers = () => {
-  const [newPlayerName, setNewPlayerName] = useState("");
-  const [team, setTeam] = useState();
-  const [players, setPlayers] = useState([]);
+  const [newPlayerName, setNewPlayerName] = useState<string>("");
+  const [team, setTeam] = useState<string>("");
+  const [players, setPlayers] = useState<PlayerStorageDTO[]>([]);
 
   const route = useRoute();
 
   const { classicTeam } = route.params as TRouteParams;
+
+  const newPlayerNameInputRef = useRef<TextInput>(null);
 
   const handleAddPlayer = async () => {
     if (newPlayerName.trim().length === 0) {
       return Alert.alert("Novo Jogadô", "Oxe, tá vazio véi.");
     }
 
-    const newPlayer = { 
-      name: newPlayerName, 
-      team, 
+    const newPlayer = {
+      name: newPlayerName,
+      team: team,
     };
 
     try {
       await playerAddByTeam(newPlayer, classicTeam);
-      const players = await playerGetByTeam(classicTeam);
-      console.log(
-        "🚀 ~ file: index.tsx:34 ~ handleAddPlayer ~ team:",
-        newPlayer,
-        team,
-        players
-      );
+
+      newPlayerNameInputRef.current?.blur();
+      setNewPlayerName("");
+      fetchPlayersByTeam();
     } catch (error) {
       if (error instanceof AppError) {
         Alert.alert("Novo Jogadô", error.message);
@@ -52,6 +53,23 @@ export const ClassicPlayers = () => {
     }
   };
 
+  const fetchPlayersByTeam = async () => {
+    try {
+      const playersByTeam = await playerGetByTeamAndClassicTeam(
+        classicTeam,
+        team
+      );
+      setPlayers(playersByTeam);
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Jogadô", "Não deu pra carregar, foi mal");
+    }
+  };
+
+  useEffect(() => {
+    fetchPlayersByTeam();
+  }, [team]);
+
   return (
     <S.Container>
       <Highlight
@@ -61,9 +79,13 @@ export const ClassicPlayers = () => {
       />
       <S.Fomrs>
         <Input
+          inputRef={newPlayerNameInputRef}
           onChangeText={setNewPlayerName}
+          value={newPlayerName}
           placeholder="Nombre de la persona"
           autoCorrect={false}
+          onSubmitEditing={handleAddPlayer}
+          returnKeyType="done"
         />
         <ButtonIcon icon="add" onPress={handleAddPlayer} />
       </S.Fomrs>
@@ -85,9 +107,9 @@ export const ClassicPlayers = () => {
       </S.HeaderList>
       <FlatList
         data={players}
-        keyExtractor={(item) => item}
+        keyExtractor={(item) => item.name}
         renderItem={({ item }) => (
-          <ClassicPlayerCard name={item} onRemove={() => {}} />
+          <ClassicPlayerCard name={item.name} onRemove={() => {}} />
         )}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={[
