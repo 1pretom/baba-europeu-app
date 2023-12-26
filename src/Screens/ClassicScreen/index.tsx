@@ -43,7 +43,6 @@ export const ClassicScreen = () => {
         data={classicTeams}
         keyExtractor={(item) => item}
         renderItem={({ item }) => {
-          console.log("Item:", item);
           return (
             <ClassicCard
               title={item}
