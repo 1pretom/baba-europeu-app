@@ -85,7 +85,7 @@ export const ClassicPlayers = () => {
   };
 
   const handleRemoveClassicTeam = () => {
-    Alert.alert("Remover time", `Vai tirar O time mesmo?`, [
+    Alert.alert("Remover time", `Vai apagar o classico ${classicTeam} mesmo?`, [
       {
         text: "Não",
         style: "cancel",
@@ -119,14 +119,14 @@ export const ClassicPlayers = () => {
       <Highlight
         title={classicTeam}
         subtitle="
-        Agregar jugadores y separar equipos"
+        Adicione cada jogador no time certo."
       />
       <S.Fomrs>
         <Input
           inputRef={newPlayerNameInputRef}
           onChangeText={setNewPlayerName}
           value={newPlayerName}
-          placeholder="Nombre de la persona"
+          placeholder="Nome da pessoa"
           autoCorrect={false}
           onSubmitEditing={handleAddPlayer}
           returnKeyType="done"
@@ -135,7 +135,7 @@ export const ClassicPlayers = () => {
       </S.Fomrs>
       <S.HeaderList>
         <FlashList
-          data={["Time A", "Time B"]}
+          data={["Bahia", "Vitória"]}
           estimatedItemSize={5}
           keyExtractor={(item) => item}
           renderItem={({ item }) => (
@@ -166,7 +166,7 @@ export const ClassicPlayers = () => {
         ListEmptyComponent={() => <ListEmpty message="Oxe, não tem ninguém?" />}
       />
       <Button
-        title="Remover Time"
+        title="Remover Clássico"
         type="SECONDARY"
         onPress={handleRemoveClassicTeam}
       />
