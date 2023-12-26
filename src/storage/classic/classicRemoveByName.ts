@@ -11,7 +11,7 @@ export const classicRemoveByName = async (classicTeamDeleted: string) => {
     const classicTeams = storedClassicTeams.filter(
       (classicTeam) => classicTeam !== classicTeamDeleted
     );
-    await AsyncStorage.getItem(
+    await AsyncStorage.setItem(
       CLASSIC_TEAMS_COLLECTION,
       JSON.stringify(classicTeams)
     );
