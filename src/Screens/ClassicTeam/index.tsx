@@ -7,10 +7,12 @@ import { useState } from "react";
 import { classicCreate } from "@storage/classic/classicCreate";
 import { AppError } from "@utils/AppError";
 import { Alert } from "react-native";
+import { ClassicHeader } from "@components/ClassicHeader";
 export const ClassicTeam = () => {
   const [classicTeam, setClassicTeam] = useState("");
 
   const navigation = useNavigation();
+
   const handleNewClassicTeam = async () => {
     try {
       if (classicTeam.trim().length === 0) {
@@ -32,6 +34,7 @@ export const ClassicTeam = () => {
 
   return (
     <S.Container>
+      <ClassicHeader showBackButton />
       <S.Content>
         <S.Icon />
         <Highlight title="Novo clássico" subtitle="Bote seu clássico pra jogo" />

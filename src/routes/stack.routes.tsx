@@ -4,7 +4,6 @@ import { ClassicPlayers } from "@screens/ClassicPlayers";
 import { ClassicScreen } from "@screens/ClassicScreen";
 import { ClassicTeam } from "@screens/ClassicTeam";
 
-
 const Stack = createNativeStackNavigator();
 
 export const StackRoutes = () => {

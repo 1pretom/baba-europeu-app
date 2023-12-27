@@ -9,6 +9,7 @@ import { Button } from "@components/Button";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { classicGetAll } from "@storage/classic/classicGetAll";
 import { Loading } from "@components/ActivityIndicator";
+import { ClassicHeader } from "@components/ClassicHeader";
 
 export const ClassicScreen = () => {
   const [classicTeams, setClassicTeams] = useState<string[]>([]);
@@ -43,6 +44,7 @@ export const ClassicScreen = () => {
 
   return (
     <S.Container>
+      <ClassicHeader />
       <Highlight title="Dia de clássico" subtitle="Bote se vc é barril" />
       {isLoading ? (
         <Loading />

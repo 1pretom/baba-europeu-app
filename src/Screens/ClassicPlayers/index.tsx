@@ -19,6 +19,7 @@ import { TextInput } from "react-native-gesture-handler";
 import { playerRemoveByTeam } from "@storage/player/playerRemoveByTeam";
 import { classicRemoveByName } from "@storage/classic/classicRemoveByName";
 import { Loading } from "@components/ActivityIndicator";
+import { ClassicHeader } from "@components/ClassicHeader";
 export const ClassicPlayers = () => {
   const [newPlayerName, setNewPlayerName] = useState<string>("");
   const [team, setTeam] = useState<string>("");
@@ -121,6 +122,7 @@ export const ClassicPlayers = () => {
 
   return (
     <S.Container>
+      <ClassicHeader showBackButton />
       <Highlight
         title={classicTeam}
         subtitle="
