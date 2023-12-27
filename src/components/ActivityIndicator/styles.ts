@@ -5,10 +5,9 @@ export const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.COLORS.BLUE_200};
+  background-color: ${({ theme }) => theme.COLORS.BLUE_100};
 `;
 
 export const Load = styled.ActivityIndicator.attrs(({ theme }) => ({
-  color: theme.COLORS.GRAY_100,
-  
+  color: theme.COLORS.BLUE_400,
 }))``;

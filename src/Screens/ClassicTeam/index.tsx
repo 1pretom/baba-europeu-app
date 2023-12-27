@@ -15,7 +15,7 @@ export const ClassicTeam = () => {
     try {
       if (classicTeam.trim().length === 0) {
         return Alert.alert(
-          "Novo time",
+          "Novo clássico",
           "Escreva o nome, não pode ficar vazio."
         );
       }
@@ -23,9 +23,9 @@ export const ClassicTeam = () => {
       navigation.navigate("ClassicPlayers", { classicTeam });
     } catch (error) {
       if (error instanceof AppError) {
-        Alert.alert("Novo time", error.message);
+        Alert.alert("Novo clássico", error.message);
       }
-      Alert.alert("Novo time", "Não deu pra criar o time pro clássico.");
+      Alert.alert("Novo clássico", "Não deu pra criar o clássico.");
       console.log(error);
     }
   };
@@ -34,9 +34,9 @@ export const ClassicTeam = () => {
     <S.Container>
       <S.Content>
         <S.Icon />
-        <Highlight title="Novo time" subtitle="Bote seu time pra jogo" />
+        <Highlight title="Novo clássico" subtitle="Bote seu clássico pra jogo" />
         <Input
-          placeholder="Bote aqui o nome do time"
+          placeholder="Bote aqui o nome do clássico"
           onChangeText={setClassicTeam}
         />
         <Button

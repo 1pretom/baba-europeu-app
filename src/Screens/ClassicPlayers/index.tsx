@@ -18,10 +18,12 @@ import { PlayerStorageDTO } from "@storage/player/PlayerStorageDTO";
 import { TextInput } from "react-native-gesture-handler";
 import { playerRemoveByTeam } from "@storage/player/playerRemoveByTeam";
 import { classicRemoveByName } from "@storage/classic/classicRemoveByName";
+import { Loading } from "@components/ActivityIndicator";
 export const ClassicPlayers = () => {
   const [newPlayerName, setNewPlayerName] = useState<string>("");
   const [team, setTeam] = useState<string>("");
   const [players, setPlayers] = useState<PlayerStorageDTO[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const route = useRoute();
   const newPlayerNameInputRef = useRef<TextInput>(null);
   const navigation = useNavigation();
@@ -99,6 +101,7 @@ export const ClassicPlayers = () => {
 
   const fetchPlayersByTeam = async () => {
     try {
+      setIsLoading(true);
       const playersByTeam = await playerGetByTeamAndClassicTeam(
         classicTeam,
         team
@@ -107,6 +110,8 @@ export const ClassicPlayers = () => {
     } catch (error) {
       console.log(error);
       Alert.alert("Jogadô", "Não deu pra carregar, foi mal");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -149,22 +154,28 @@ export const ClassicPlayers = () => {
         />
         <S.NumbersOfPlayers>{players?.length}</S.NumbersOfPlayers>
       </S.HeaderList>
-      <FlatList
-        data={players}
-        keyExtractor={(item) => item.name}
-        renderItem={({ item }) => (
-          <ClassicPlayerCard
-            name={item.name}
-            onRemove={() => handleRemovePlayer(item.name)}
-          />
-        )}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={[
-          { paddingBottom: 100 },
-          players?.length === 0 && { flex: 1 },
-        ]}
-        ListEmptyComponent={() => <ListEmpty message="Oxe, não tem ninguém?" />}
-      />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <FlatList
+          data={players}
+          keyExtractor={(item) => item.name}
+          renderItem={({ item }) => (
+            <ClassicPlayerCard
+              name={item.name}
+              onRemove={() => handleRemovePlayer(item.name)}
+            />
+          )}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={[
+            { paddingBottom: 100 },
+            players?.length === 0 && { flex: 1 },
+          ]}
+          ListEmptyComponent={() => (
+            <ListEmpty message="Oxe, não tem ninguém?" />
+          )}
+        />
+      )}
       <Button
         title="Remover Clássico"
         type="SECONDARY"
