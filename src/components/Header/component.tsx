@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./styles";
 import { TITLE_TEXT } from "./constants";
 
@@ -8,13 +8,19 @@ import { THeader } from "./types";
 export const Header = ({ showBackButton = false }: THeader) => {
   return (
     <S.Container>
-      {showBackButton && (
-        <S.BackButton>
-          <S.BackIcon />
-        </S.BackButton>
+      {showBackButton ? (
+        <>
+          <S.BackButton>
+            <S.BackIcon />
+          </S.BackButton>
+          <S.Image source={babaLogo} />
+        </>
+      ) : (
+        <>
+          <S.Image source={babaLogo} />
+          <S.Text>{TITLE_TEXT}</S.Text>
+        </>
       )}
-      <S.Image source={babaLogo} />
-      <S.Text>{TITLE_TEXT}</S.Text>
     </S.Container>
   );
 };
