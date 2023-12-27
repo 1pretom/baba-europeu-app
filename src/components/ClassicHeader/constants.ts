@@ -1,1 +1,1 @@
-export const TITLE_TEXT = "Baba Europeu App";
+export const TITLE_TEXT = "Clássicos do Baba Europeu";
