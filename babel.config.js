@@ -15,7 +15,11 @@ module.exports = function (api) {
             '@routes': './src/routes',
             '@screens': './src/Screens',
             '@utils': './src/utils',
-            '@storage': './src/storage'
+            '@storage': './src/storage',
+            '@dtos': './src/dtos',
+            '@services': './src/services',
+            '@hooks': './src/hooks',
+            '@contexts': './src/contexts',
           }
         }
       ]
