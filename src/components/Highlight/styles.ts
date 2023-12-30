@@ -5,13 +5,13 @@ export const Container = styled.View`
 `;
 export const Title = styled.Text`
   text-align: center;
-  font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
-  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+  font-size: ${({ theme }) => theme.fontSize.xl}px;
+  font-family: ${({ theme }) => theme.fonts.bold};
   color: ${({ theme }) => theme.COLORS.BLUE_400};
 `;
 export const SubTitle = styled.Text`
   text-align: center;
-  font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
-  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+  font-size: ${({ theme }) => theme.fontSize.sm}px;
+  font-family: ${({ theme }) => theme.fonts.regular};
   color: ${({ theme }) => theme.COLORS.BLUE_300};
 `;

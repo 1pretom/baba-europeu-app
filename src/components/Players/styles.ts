@@ -10,8 +10,8 @@ export const Container = styled.View`
 export const Name = styled.Text`
   color: ${({ theme }) => theme.COLORS.GRAY_700};
   text-align: center;
-  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
-  font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
+  font-family: ${({ theme }) => theme.fonts.regular};
+  font-size: ${({ theme }) => theme.fontSize.xl}px;
 `;
 
 export const Button = styled.TouchableOpacity`

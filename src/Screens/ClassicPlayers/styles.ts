@@ -24,7 +24,7 @@ export const HeaderList = styled.View`
 export const NumbersOfPlayers = styled.Text`
   ${({ theme }) => css`
     color: ${theme.COLORS.GRAY_700};
-    font-family: ${theme.FONT_FAMILY.BOLD};
-    font-size: ${theme.FONT_SIZE.SM}px;
+    font-family: ${theme.fonts.bold};
+    font-size: ${theme.fontSize.sm}px;
   `}
 `;

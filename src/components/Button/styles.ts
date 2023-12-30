@@ -16,7 +16,7 @@ export const Container = styled(TouchableOpacity)<TButtonType>`
 `;
 
 export const Title = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+  font-size: ${({ theme }) => theme.fontSize.md}px;
   color: ${({ theme }) => theme.COLORS.WHITE};
-  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+  font-family: ${({ theme }) => theme.fonts.bold};
 `;

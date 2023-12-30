@@ -14,9 +14,9 @@ export const Container = styled.TouchableOpacity`
   margin-bottom: 10px;
 `;
 export const Title = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+  font-size: ${({ theme }) => theme.fontSize.lg}px;
   color: ${({ theme }) => theme.COLORS.WHITE};
-  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+  font-family: ${({ theme }) => theme.fonts.regular};
   padding-left: 10px;
 `;
 

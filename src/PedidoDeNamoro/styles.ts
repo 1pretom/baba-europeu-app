@@ -21,7 +21,7 @@ export const SimButton = styled.TouchableOpacity`
 `;
 
 export const ButtonText = styled.Text`
-  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
-  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+  font-family: ${({ theme }) => theme.fonts.bold};
+  font-size: ${({ theme }) => theme.fontSize.md}px;
   color: ${({ theme }) => theme.COLORS.GRAY_100};
 `;

@@ -20,7 +20,7 @@ export const Button = styled.TouchableOpacity`
 
 export const ButtonText = styled.Text`
   color: ${({ theme }) => theme.COLORS.RED};
-  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+  font-size: ${({ theme }) => theme.fontSize.md}px;
 `;
 
 export const PickerView = styled.View`
