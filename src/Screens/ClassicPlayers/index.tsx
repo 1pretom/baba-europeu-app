@@ -18,7 +18,7 @@ import { PlayerStorageDTO } from "@storage/player/PlayerStorageDTO";
 import { TextInput } from "react-native-gesture-handler";
 import { playerRemoveByTeam } from "@storage/player/playerRemoveByTeam";
 import { classicRemoveByName } from "@storage/classic/classicRemoveByName";
-import { Loading } from "@components/ActivityIndicator";
+import { Loading } from "@components/Loading";
 import { ClassicHeader } from "@components/ClassicHeader";
 export const ClassicPlayers = () => {
   const [newPlayerName, setNewPlayerName] = useState<string>("");

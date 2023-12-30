@@ -8,7 +8,7 @@ import { ListEmpty } from "@components/ListEmpty";
 import { Button } from "@components/Button";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { classicGetAll } from "@storage/classic/classicGetAll";
-import { Loading } from "@components/ActivityIndicator";
+import { Loading } from "@components/Loading";
 import { ClassicHeader } from "@components/ClassicHeader";
 
 export const ClassicScreen = () => {

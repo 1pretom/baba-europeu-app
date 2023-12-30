@@ -3,7 +3,7 @@ import { Finances } from "../Screens/Finances";
 import { Feather } from "@expo/vector-icons";
 import { MatchSettings } from "@screens/MatchSettings";
 import { PlayersList } from "@screens/PlayersList";
-import { Profile } from "@screens/Profile";
+import { SignIn } from "@screens/SignIn";
 import { Rankings } from "@screens/Rankings";
 
 
@@ -44,7 +44,7 @@ export const TabRoutes = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={SignIn}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Feather name="user" color={color} size={size} />
