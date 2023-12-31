@@ -3,9 +3,8 @@ import { Finances } from "../Screens/Finances";
 import { Feather } from "@expo/vector-icons";
 import { MatchSettings } from "@screens/MatchSettings";
 import { PlayersList } from "@screens/PlayersList";
-import { SignIn } from "@screens/SignIn";
 import { Rankings } from "@screens/Rankings";
-
+import { SignIn } from "@screens/SignIn";
 
 const Tab = createBottomTabNavigator();
 
@@ -39,17 +38,17 @@ export const TabRoutes = () => {
           tabBarIcon: ({ color, size }) => (
             <Feather name="dollar-sign" color={color} size={size} />
           ),
-          tabBarLabel: "Love",
+          tabBarLabel: "Finances",
         }}
       />
       <Tab.Screen
-        name="Profile"
+        name="SignIn"
         component={SignIn}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Feather name="user" color={color} size={size} />
           ),
-          tabBarLabel: "Perfil",
+          tabBarLabel: "SignIn",
         }}
       />
       <Tab.Screen

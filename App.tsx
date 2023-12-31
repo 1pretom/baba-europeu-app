@@ -17,8 +17,8 @@ export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
 
   return (
-    <ThemeProvider theme={theme}>
-      <NativeBaseProvider>
+    <NativeBaseProvider>
+      <ThemeProvider theme={theme}>
         <S.Container>
           <StatusBar
             barStyle="light-content"
@@ -27,7 +27,7 @@ export default function App() {
           />
           {fontsLoaded ? <Routes /> : <Loading />}
         </S.Container>
-      </NativeBaseProvider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </NativeBaseProvider>
   );
 }
