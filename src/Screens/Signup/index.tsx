@@ -1,18 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./styles";
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
 import { Highlight } from "@components/Highlight";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
+import DateTimePicker from "@react-native-community/datetimepicker";
 import * as CONSTANT from "./constants";
+import { Picker } from "@react-native-picker/picker";
 
 export const SignUp = () => {
   const navigation = useNavigation();
+  const [date, setDate] = useState<Date | null>(null);
+  const [showDatePicker, setShowDatePicker] = useState(false);
   const handleGoBack = () => {
-    navigation.navigate('SignIn');
+    navigation.navigate("SignIn");
   };
-
+  const handleDateChange = (event: Event, selectedDate: Date | undefined) => {
+    const currentDate = selectedDate || date;
+    setShowDatePicker(false);
+    setDate(currentDate);
+  };
+  const handleInputPress = () => {
+    setShowDatePicker(true);
+  };
+  const [position, setPosition] = useState("");
   return (
     <S.Container>
       <ScrollView
@@ -24,7 +36,6 @@ export const SignUp = () => {
             title={CONSTANT.HIGHLIGHT_TITLE}
             subtitle={CONSTANT.HIGHLIGHT_SUBTITLE}
           />
-
           <S.Form>
             <Input
               placeholder={CONSTANT.EMAIL_PLACEHOLDER}
@@ -33,10 +44,45 @@ export const SignUp = () => {
             />
             <Input placeholder={CONSTANT.NAME_PLACEHOLDER} />
             <Input placeholder={CONSTANT.NICKNAME_PLACEHOLDER} />
-            <Input placeholder={CONSTANT.POSITION_PLACEHOLDER} />
+            <S.PositionView>
+              <Input
+                placeholder="Posição"
+                value={position}
+                style={{ flex: 1 }}
+              />
+              <Picker
+                selectedValue={position}
+                onValueChange={(itemValue) => setPosition(itemValue)}
+                style={{ flex: 0.2 }}
+              >
+                {CONSTANT.POSITION_PICKER_ITEMS.map((item) => (
+                  <Picker.Item
+                    key={item.value}
+                    label={item.label}
+                    value={item.value}
+                  />
+                ))}
+              </Picker>
+            </S.PositionView>
+
+            <Input
+              value={
+                date
+                  ? date.toLocaleDateString()
+                  : CONSTANT.DATE_OF_BIRTH_PLACEHOLDER
+              }
+              onFocus={handleInputPress}
+            />
+            {showDatePicker && (
+              <DateTimePicker
+                value={date || new Date()}
+                onChange={handleDateChange}
+              />
+            )}
             <Input
               placeholder={CONSTANT.PASSWORD_PLACEHOLDER}
               secureTextEntry
+              autoCapitalize="none"
             />
             <Button
               title={CONSTANT.CREATE_AND_ENTER_BUTTON_TITLE}

@@ -33,6 +33,7 @@ export const SignIn = () => {
             <Input
               placeholder={CONSTANT.PASSWORD_PLACEHOLDER}
               secureTextEntry
+              autoCapitalize="none"
             />
             <Button title={CONSTANT.ACCESS_BUTTON_TITLE} onPress={() => {}} />
           </S.Form>

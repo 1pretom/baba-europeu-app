@@ -25,3 +25,10 @@ export const ButtonContainer = styled.View`
   justify-content: center;
   padding-bottom: 10%;
 `;
+
+export const PositionView = styled.View`
+  flex-direction: row;
+  border-radius: 6px;
+  background-color: #054f77;
+  margin-bottom: 10px;
+`;
