@@ -12,7 +12,9 @@ import { Picker } from "@react-native-picker/picker";
 export const SignUp = () => {
   const navigation = useNavigation();
   const [date, setDate] = useState<Date | null>(null);
-  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
+  const [position, setPosition] = useState<string>();
+
   const handleGoBack = () => {
     navigation.navigate("SignIn");
   };
@@ -24,7 +26,6 @@ export const SignUp = () => {
   const handleInputPress = () => {
     setShowDatePicker(true);
   };
-  const [position, setPosition] = useState("");
   return (
     <S.Container>
       <ScrollView
@@ -46,7 +47,7 @@ export const SignUp = () => {
             <Input placeholder={CONSTANT.NICKNAME_PLACEHOLDER} />
             <S.PositionView>
               <Input
-                placeholder="Posição"
+                placeholder={CONSTANT.POSITION_PLACEHOLDER}
                 value={position}
                 style={{ flex: 1 }}
               />
