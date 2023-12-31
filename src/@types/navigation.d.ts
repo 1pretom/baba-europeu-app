@@ -6,6 +6,7 @@ export declare global {
       ClassicPlayers: {
         classicTeam: string;
       };
+      SignUp: undefined;
     }
   }
 }

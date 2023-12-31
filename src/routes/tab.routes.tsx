@@ -5,6 +5,7 @@ import { MatchSettings } from "@screens/MatchSettings";
 import { PlayersList } from "@screens/PlayersList";
 import { Rankings } from "@screens/Rankings";
 import { SignIn } from "@screens/SignIn";
+import { SignUp } from "@screens/SignUp";
 
 const Tab = createBottomTabNavigator();
 
@@ -43,7 +44,7 @@ export const TabRoutes = () => {
       />
       <Tab.Screen
         name="SignIn"
-        component={SignIn}
+        component={SignUp}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Feather name="user" color={color} size={size} />
