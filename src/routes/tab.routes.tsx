@@ -44,7 +44,7 @@ export const TabRoutes = () => {
       />
       <Tab.Screen
         name="SignIn"
-        component={SignUp}
+        component={SignIn}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Feather name="user" color={color} size={size} />

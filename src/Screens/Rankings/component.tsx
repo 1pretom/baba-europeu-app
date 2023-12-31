@@ -6,7 +6,7 @@ import { View, Text } from "react-native";
 export const Rankings = () => {
   const navigation = useNavigation();
   const handleOnPressProfile = () => {
-    navigation.navigate("Profile");
+    navigation.navigate("SignUp");
   };
   return (
     <View>

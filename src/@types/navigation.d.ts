@@ -7,6 +7,8 @@ export declare global {
         classicTeam: string;
       };
       SignUp: undefined;
+      SignIn: undefined;
+      PlayersList: undefined;
     }
   }
 }

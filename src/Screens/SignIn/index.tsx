@@ -5,6 +5,7 @@ import { Button } from "@components/Button";
 import { Highlight } from "@components/Highlight";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
+import * as CONSTANT from "./constants";
 
 export const SignIn = () => {
   const navigation = useNavigation();
@@ -19,20 +20,26 @@ export const SignIn = () => {
         showsVerticalScrollIndicator={false}
       >
         <S.Content>
-          <S.Fomr>
-            <Highlight title="Acesse ao baba" subtitle="Faça seu login parça" />
+          <S.Form>
+            <Highlight
+              title={CONSTANT.HIGHLIGHT_TITLE}
+              subtitle={CONSTANT.HIGHLIGHT_SUBTITLE}
+            />
             <Input
-              placeholder={"Email"}
+              placeholder={CONSTANT.EMAIL_PLACEHOLDER}
               keyboardType="email-address"
               autoCapitalize="none"
             />
-            <Input placeholder={"Senha"} secureTextEntry />
-            <Button title="Acessar" onPress={() => {}} />
-          </S.Fomr>
+            <Input
+              placeholder={CONSTANT.PASSWORD_PLACEHOLDER}
+              secureTextEntry
+            />
+            <Button title={CONSTANT.ACCESS_BUTTON_TITLE} onPress={() => {}} />
+          </S.Form>
           <S.ButtonContainer>
-            <S.SignInText>Entre pro baba!</S.SignInText>
+            <S.SignInText>{CONSTANT.ENTER_THE_BABA_TEXT}</S.SignInText>
             <Button
-              title="Criar conta no baba"
+              title={CONSTANT.SIGN_UP_TEXT}
               type="TERTIARY"
               onPress={handlePressSignup}
             />

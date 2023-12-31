@@ -5,11 +5,12 @@ import { Button } from "@components/Button";
 import { Highlight } from "@components/Highlight";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
+import * as CONSTANT from "./constants";
 
 export const SignUp = () => {
   const navigation = useNavigation();
   const handleGoBack = () => {
-    navigation.goBack();
+    navigation.navigate('SignIn');
   };
 
   return (
@@ -19,28 +20,33 @@ export const SignUp = () => {
         showsVerticalScrollIndicator={false}
       >
         <S.Content>
-          <Highlight title="Entre pro baba" subtitle="Faça sua conta" />
+          <Highlight
+            title={CONSTANT.HIGHLIGHT_TITLE}
+            subtitle={CONSTANT.HIGHLIGHT_SUBTITLE}
+          />
 
-          <S.Fomr>
+          <S.Form>
             <Input
-              placeholder={"Email"}
+              placeholder={CONSTANT.EMAIL_PLACEHOLDER}
               keyboardType="email-address"
               autoCapitalize="none"
             />
-            <Input placeholder={"Nome"} />
-            <Input placeholder={"Apelido"} />
+            <Input placeholder={CONSTANT.NAME_PLACEHOLDER} />
+            <Input placeholder={CONSTANT.NICKNAME_PLACEHOLDER} />
+            <Input placeholder={CONSTANT.POSITION_PLACEHOLDER} />
             <Input
-              placeholder={"Posição"}
-              keyboardType="email-address"
-              autoCapitalize="none"
+              placeholder={CONSTANT.PASSWORD_PLACEHOLDER}
+              secureTextEntry
             />
-            <Input placeholder={"Senha"} secureTextEntry />
-            <Button title="Criar e entrar" onPress={() => {}} />
-          </S.Fomr>
-          <S.ButtonContainer>
-            <S.SignInText>Já tem conta?</S.SignInText>
             <Button
-              title="Voltar pro login"
+              title={CONSTANT.CREATE_AND_ENTER_BUTTON_TITLE}
+              onPress={() => {}}
+            />
+          </S.Form>
+          <S.ButtonContainer>
+            <S.SignInText>{CONSTANT.ALREADY_HAVE_ACCOUNT_TEXT}</S.SignInText>
+            <Button
+              title={CONSTANT.BACK_TO_LOGIN_BUTTON_TITLE}
               type="TERTIARY"
               onPress={handleGoBack}
             />

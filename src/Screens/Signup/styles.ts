@@ -9,7 +9,7 @@ export const Content = styled.View`
   flex: 1;
   justify-content: space-between;
 `;
-export const Fomr = styled.View`
+export const Form = styled.View`
   width: 100%;
   border-radius: 6px;
   padding: 16px;
@@ -23,5 +23,5 @@ export const SignInText = styled.Text`
 export const ButtonContainer = styled.View`
   align-items: center;
   justify-content: center;
-  padding-bottom: 5%;
+  padding-bottom: 10%;
 `;
