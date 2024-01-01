@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Modal, TouchableOpacity, Text } from "react-native";
 import * as S from "./styles";
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
@@ -7,13 +8,13 @@ import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import * as CONSTANT from "./constants";
-import { Picker } from "@react-native-picker/picker";
 
 export const SignUp = () => {
   const navigation = useNavigation();
   const [date, setDate] = useState<Date | null>(null);
   const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
   const [position, setPosition] = useState<string>();
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
 
   const handleGoBack = () => {
     navigation.navigate("SignIn");
@@ -50,20 +51,39 @@ export const SignUp = () => {
                 placeholder={CONSTANT.POSITION_PLACEHOLDER}
                 value={position}
                 style={{ flex: 1 }}
+                onFocus={() => setModalVisible(true)}
               />
-              <Picker
-                selectedValue={position}
-                onValueChange={(itemValue) => setPosition(itemValue)}
-                style={{ flex: 0.2 }}
+              <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                  setModalVisible(!modalVisible);
+                }}
+                style={{ backgroundColor: "red" }}
               >
-                {CONSTANT.POSITION_PICKER_ITEMS.map((item) => (
-                  <Picker.Item
-                    key={item.value}
-                    label={item.label}
-                    value={item.value}
-                  />
-                ))}
-              </Picker>
+                <TouchableOpacity
+                  style={{
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: "rgba(0,0,0,0.5)",
+                  }}
+                  onPress={() => setModalVisible(false)}
+                >
+                  {CONSTANT.POSITION_PICKER_ITEMS.map((item) => (
+                    <S.ModalItem
+                      key={item.value}
+                      onPress={() => {
+                        setPosition(item.value);
+                        setModalVisible(false);
+                      }}
+                    >
+                      <S.ModalText>{item.label}</S.ModalText>
+                    </S.ModalItem>
+                  ))}
+                </TouchableOpacity>
+              </Modal>
             </S.PositionView>
 
             <Input
