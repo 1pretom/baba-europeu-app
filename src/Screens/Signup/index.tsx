@@ -46,7 +46,6 @@ export const SignUp = () => {
             />
             <Input placeholder={CONSTANT.NAME_PLACEHOLDER} />
             <Input placeholder={CONSTANT.NICKNAME_PLACEHOLDER} />
-            <S.PositionView>
               <Input
                 placeholder={CONSTANT.POSITION_PLACEHOLDER}
                 value={position}
@@ -84,7 +83,6 @@ export const SignUp = () => {
                   ))}
                 </TouchableOpacity>
               </Modal>
-            </S.PositionView>
 
             <Input
               value={

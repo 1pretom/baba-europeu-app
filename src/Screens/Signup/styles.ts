@@ -26,12 +26,7 @@ export const ButtonContainer = styled.View`
   padding-bottom: 10%;
 `;
 
-export const PositionView = styled.View`
-  flex-direction: row;
-  border-radius: 6px;
-  background-color: #054f77;
-  margin-bottom: 10px;
-`;
+
 export const ModalText = styled.Text`
   justify-content: center;
   align-items: center;
