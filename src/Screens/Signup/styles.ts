@@ -47,4 +47,6 @@ export const ModalItem = styled.TouchableOpacity`
   border-radius: 5px;
   align-items: center;
   width: 50%;
+  border: 1px;
+  border-color: ${({ theme }) => theme.COLORS.BLUE_100};
 `;
