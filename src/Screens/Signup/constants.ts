@@ -1,3 +1,5 @@
+import { TPosition } from "./types";
+
 export const EMAIL_PLACEHOLDER = "Email";
 export const NAME_PLACEHOLDER = "Nome";
 export const NICKNAME_PLACEHOLDER = "Apelido";
@@ -10,16 +12,15 @@ export const HIGHLIGHT_TITLE = "Entre pro baba";
 export const HIGHLIGHT_SUBTITLE = "Faça sua conta";
 export const DATE_OF_BIRTH_PLACEHOLDER = "Data de Nascimento";
 
-export const POSITION_PICKER_ITEMS = [
-    { label: "Goleiro", value: "Goleiro" },
-    { label: "Defesa", value: "Defesa" },
-    { label: "Fixo", value: "Fixo" },
-    { label: "Lateral", value: "Lateral" },
-    { label: "Volante", value: "Volante" },
-    { label: "Meia", value: "Meia" },
-    { label: "Ala", value: "Ala" },
-    { label: "Ponta", value: "Ponta" },
-    { label: "Atacante", value: "Atacante" },
-    { label: "Pivô", value: "Pivô" },
-
-  ];
+export const POSITION_PICKER_ITEMS: TPosition[] = [
+  { label: "Goleiro", value: "Goleiro" },
+  { label: "Zagueiro", value: "Zagueiro" },
+  { label: "Fixo", value: "Fixo" },
+  { label: "Lateral", value: "Lateral" },
+  { label: "Ala", value: "Ala" },
+  { label: "Volante", value: "Volante" },
+  { label: "Meia", value: "Meia" },
+  { label: "Ponta", value: "Ponta" },
+  { label: "Centro-Avante", value: "Centro-Avante" },
+  { label: "Pivô", value: "Pivô" },
+];

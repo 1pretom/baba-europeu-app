@@ -1,4 +1,7 @@
 import styled from "styled-components/native";
+import { MaterialIcons } from "@expo/vector-icons";
+import { SoccerBall } from "phosphor-react-native";
+
 export const Container = styled.View`
   flex: 1;
   padding: 16px;
@@ -26,7 +29,6 @@ export const ButtonContainer = styled.View`
   padding-bottom: 10%;
 `;
 
-
 export const ModalText = styled.Text`
   justify-content: center;
   align-items: center;
@@ -44,8 +46,9 @@ export const ModalItem = styled.TouchableOpacity`
   width: 50%;
   border: 1px;
   border-color: ${({ theme }) => theme.COLORS.BLUE_100};
+  flex-direction: row;
+  justify-content: space-between;
 `;
-
 
 export const Fomrs = styled.View`
   width: 100%;
@@ -53,6 +56,10 @@ export const Fomrs = styled.View`
   flex-direction: row;
   justify-content: center;
   border-radius: 6px;
-  margin-bottom: 10px;
-
+  margin-bottom: 5px;
 `;
+
+export const Icon = styled(SoccerBall).attrs(({ theme }) => ({
+  size: 30,
+  color: theme.COLORS.WHITE,
+}))``;

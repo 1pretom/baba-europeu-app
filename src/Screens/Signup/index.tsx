@@ -53,7 +53,6 @@ export const SignUp = () => {
                 value={position}
                 style={{ flex: 1 }}
                 onFocus={() => setModalVisible(true)}
-                
               />
               <ButtonIcon onPress={() => setModalVisible(true)} icon="add" />
               <Modal
@@ -81,6 +80,7 @@ export const SignUp = () => {
                         setModalVisible(false);
                       }}
                     >
+                      <S.Icon />
                       <S.ModalText>{item.label}</S.ModalText>
                     </S.ModalItem>
                   ))}
