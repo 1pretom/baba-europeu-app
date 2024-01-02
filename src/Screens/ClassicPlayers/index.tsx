@@ -22,7 +22,7 @@ import { Loading } from "@components/Loading";
 import { ClassicHeader } from "@components/ClassicHeader";
 export const ClassicPlayers = () => {
   const [newPlayerName, setNewPlayerName] = useState<string>("");
-  const [team, setTeam] = useState<string>("");
+  const [team, setTeam] = useState<string>("Bahia");
   const [players, setPlayers] = useState<PlayerStorageDTO[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const route = useRoute();
