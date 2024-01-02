@@ -1,7 +1,6 @@
 import styled from "styled-components/native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { TButtonIconStyle } from "./types";
-//import {FontAwesome} from '@expo/vector-icons' para o ícone de estrela star e star-o
 
 export const Container = styled.TouchableOpacity`
   width: 60px;

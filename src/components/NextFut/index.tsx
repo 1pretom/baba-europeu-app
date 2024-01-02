@@ -91,6 +91,7 @@ export const NextFut = () => {
         )}
       />
 
+
       <S.PickerView>
         <S.Name>Quantidade de jogadores por time:</S.Name>
         <Picker

@@ -45,3 +45,14 @@ export const ModalItem = styled.TouchableOpacity`
   border: 1px;
   border-color: ${({ theme }) => theme.COLORS.BLUE_100};
 `;
+
+
+export const Fomrs = styled.View`
+  width: 100%;
+  background-color: ${({ theme }) => theme.COLORS.BLUE_300};
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 6px;
+  margin-bottom: 10px;
+
+`;

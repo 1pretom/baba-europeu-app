@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, TouchableOpacity, Text } from "react-native";
+import { Modal, TouchableOpacity, Text, View } from "react-native";
 import * as S from "./styles";
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
@@ -8,6 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import * as CONSTANT from "./constants";
+import { ButtonIcon } from "@components/ButtonIcon";
 
 export const SignUp = () => {
   const navigation = useNavigation();
@@ -46,12 +47,15 @@ export const SignUp = () => {
             />
             <Input placeholder={CONSTANT.NAME_PLACEHOLDER} />
             <Input placeholder={CONSTANT.NICKNAME_PLACEHOLDER} />
+            <S.Fomrs>
               <Input
                 placeholder={CONSTANT.POSITION_PLACEHOLDER}
                 value={position}
                 style={{ flex: 1 }}
                 onFocus={() => setModalVisible(true)}
+                
               />
+              <ButtonIcon onPress={() => setModalVisible(true)} icon="add" />
               <Modal
                 animationType="slide"
                 transparent={true}
@@ -59,7 +63,6 @@ export const SignUp = () => {
                 onRequestClose={() => {
                   setModalVisible(!modalVisible);
                 }}
-                style={{ backgroundColor: "red" }}
               >
                 <TouchableOpacity
                   style={{
@@ -83,6 +86,7 @@ export const SignUp = () => {
                   ))}
                 </TouchableOpacity>
               </Modal>
+            </S.Fomrs>
 
             <Input
               value={
