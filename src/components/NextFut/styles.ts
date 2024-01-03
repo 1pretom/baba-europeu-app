@@ -38,3 +38,22 @@ export const Fomr = styled.View`
   justify-content: center;
   border-radius: 6px;
 `;
+export const ModalItem = styled.TouchableOpacity`
+  padding: 10px;
+  background-color: ${({ theme }) => theme.COLORS.BLUE_400};
+  margin-bottom: 10px;
+  border-radius: 5px;
+  align-items: center;
+  width: 50%;
+  border: 1px;
+  border-color: ${({ theme }) => theme.COLORS.BLUE_100};
+  flex-direction: row;
+  justify-content: space-between;
+`;
+export const ModalText = styled.Text`
+  justify-content: center;
+  align-items: center;
+  font-size: ${({ theme }) => theme.fontSize.md}px;
+  font-family: ${({ theme }) => theme.fonts.bold};
+  color: ${({ theme }) => theme.COLORS.WHITE};
+`;

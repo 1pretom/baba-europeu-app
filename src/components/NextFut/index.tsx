@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Text, View } from "react-native";
+import { Alert, Modal, Text, TouchableOpacity, View } from "react-native";
 import { Players } from "../Players/component";
 import * as S from "./styles";
 import {
@@ -7,6 +7,7 @@ import {
   ALERT_TITLE,
   ALREADY_ADDED,
   INSERT_NAME,
+  POSITION_PICKER_ITEMS,
   PRESENCE_LIST,
   SORT_PLAYERS,
 } from "./constants";
@@ -15,6 +16,7 @@ import { FlashList } from "@shopify/flash-list";
 import { Input } from "@components/Input";
 import { ButtonIcon } from "@components/ButtonIcon";
 import { Button } from "@components/Button";
+import { POSITION_PLACEHOLDER } from "@screens/SignUp/constants";
 
 export const NextFut = () => {
   const [players, setPlayers] = useState<string[]>([]);
@@ -22,6 +24,8 @@ export const NextFut = () => {
   const [playersPerTeam, setPlayersPerTeam] = useState<number>(0);
   const [numberOfTeams, setNumberOfTeams] = useState<number>(2);
   const [teams, setTeams] = useState<string[][]>([]);
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [position, setPosition] = useState<string>();
 
   const handleAddPlayer = () => {
     if (players.includes(playerName)) {
@@ -91,9 +95,48 @@ export const NextFut = () => {
         )}
       />
 
-
       <S.PickerView>
         <S.Name>Quantidade de jogadores por time:</S.Name>
+
+        <S.Fomr>
+          <Input
+            placeholder={POSITION_PLACEHOLDER}
+            value={position}
+            style={{ flex: 1 }}
+            onFocus={() => setModalVisible(true)}
+          />
+          <ButtonIcon onPress={() => setModalVisible(true)} icon="add" />
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+              setModalVisible(!modalVisible);
+            }}
+          >
+            <TouchableOpacity
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: "rgba(0,0,0,0.5)",
+              }}
+              onPress={() => setModalVisible(false)}
+            >
+              {POSITION_PICKER_ITEMS.map((item) => (
+                <S.ModalItem
+                  key={item.value}
+                  onPress={() => {
+                    setPosition(item.value);
+                    setModalVisible(false);
+                  }}
+                >
+                  <S.ModalText>{item.label}</S.ModalText>
+                </S.ModalItem>
+              ))}
+            </TouchableOpacity>
+          </Modal>
+        </S.Fomr>
         <Picker
           selectedValue={playersPerTeam}
           onValueChange={(itemValue, itemIndex) => setPlayersPerTeam(itemValue)}
