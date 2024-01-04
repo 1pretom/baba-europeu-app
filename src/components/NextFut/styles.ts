@@ -37,6 +37,7 @@ export const Fomr = styled.View`
   flex-direction: row;
   justify-content: center;
   border-radius: 6px;
+  margin-bottom: 10px;
 `;
 export const ModalItem = styled.TouchableOpacity`
   padding: 10px;
@@ -56,4 +57,11 @@ export const ModalText = styled.Text`
   font-size: ${({ theme }) => theme.fontSize.md}px;
   font-family: ${({ theme }) => theme.fonts.bold};
   color: ${({ theme }) => theme.COLORS.WHITE};
+`;
+
+export const StyledOverlay = styled.TouchableOpacity`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000180;
 `;
