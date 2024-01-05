@@ -5,7 +5,7 @@ export const Container = styled.View`
   justify-content: center;
   background-color: #ecf0f1;
 `;
-export const Videoo = styled(Video)`
+export const VideoContent = styled(Video)`
   align-self: center;
   width: 320;
   height: 200;
