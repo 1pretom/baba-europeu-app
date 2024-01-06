@@ -10,4 +10,4 @@ you just need to copy this repo, and paste `yarn start` on yout terminal. Then s
 
 ## What is this app for?
 
-I'm creating un app to use on my football group instead the one that we use because it turned too much expensive, then i decided to make, while I learn typescript and react-native
+I'm creating un app to use on my football group because of the one that we use turned too much expensive, then I decided to make it, while I learn typescript and react-native
