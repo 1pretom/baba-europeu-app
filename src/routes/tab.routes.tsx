@@ -6,6 +6,7 @@ import { PlayersList } from "@screens/PlayersList";
 import { Rankings } from "@screens/Rankings";
 import { SignIn } from "@screens/SignIn";
 import { SignUp } from "@screens/SignUp";
+import { WatchVideos } from "@screens/Video";
 
 const Tab = createBottomTabNavigator();
 
@@ -54,7 +55,7 @@ export const TabRoutes = () => {
       />
       <Tab.Screen
         name="Rankings"
-        component={Rankings}
+        component={WatchVideos}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Feather name="radio" color={color} size={size} />
