@@ -23,7 +23,7 @@
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/baba-europeu-app.git
+   git clone https://github.com/1pretom/baba-europeu-app.git
    ```
 2. **Install dependencies:**
    ```bash
@@ -50,4 +50,4 @@ This project is licensed under the MIT License.
 
 - **Technology stack:** React Native, TypeScript
 - **Development status:** Under active development
-- **Contact:** Feel free to reach out to @1pretom for any questions or feedback.
+- **Contact:** Feel free to reach out to [@1pretom](https://github.com/1pretom) for any questions or feedback.
