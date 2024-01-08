@@ -3,17 +3,12 @@ import { Button } from "react-native";
 import { ResizeMode } from "expo-av";
 import * as S from "./styles";
 import { useRef, useState, useEffect } from "react";
-
+import { videoList } from "./constants";
 export const WatchVideos = () => {
   const video = useRef(null);
   const [status, setStatus] = useState({});
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [showNextButton, setShowNextButton] = useState(false);
-  const videoList = [
-    "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
-    "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-  ];
 
   const playNextVideo = () => {
     if (currentVideoIndex < videoList.length - 1) {
