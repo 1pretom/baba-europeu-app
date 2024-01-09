@@ -9,9 +9,10 @@ import { ScrollView } from "react-native-gesture-handler";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import * as CONSTANT from "./constants";
 import { ButtonIcon } from "@components/ButtonIcon";
+import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 
 export const SignUp = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<AuthNavigatorRoutesProps>();
   const [date, setDate] = useState<Date | null>(null);
   const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
   const [position, setPosition] = useState<string>();

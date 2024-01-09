@@ -6,9 +6,10 @@ import { Highlight } from "@components/Highlight";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import * as CONSTANT from "./constants";
+import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 
 export const SignIn = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<AuthNavigatorRoutesProps>();
   const handlePressSignup = () => {
     navigation.navigate("SignUp");
   };
