@@ -5,8 +5,8 @@ import { AuthRoutes } from "./auth.routes";
 export const Routes = () => {
   return (
     <NavigationContainer>
-      <DrawerRoutes />
-      {/* <AuthRoutes/> */}
+      {/* <DrawerRoutes /> */}
+      <AuthRoutes/>
     </NavigationContainer>
   );
 };
