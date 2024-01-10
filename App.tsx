@@ -12,7 +12,6 @@ import {
 import { Loading } from "@components/Loading";
 import { StatusBar } from "react-native";
 import { NativeBaseProvider } from "native-base";
-
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
 

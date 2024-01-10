@@ -1,4 +1,7 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {
+  BottomTabNavigationProp,
+  createBottomTabNavigator,
+} from "@react-navigation/bottom-tabs";
 import { Finances } from "../Screens/Finances";
 import { Feather } from "@expo/vector-icons";
 import { MatchSettings } from "@screens/MatchSettings";
@@ -8,12 +11,24 @@ import { SignIn } from "@screens/SignIn";
 import { SignUp } from "@screens/SignUp";
 import { WatchVideos } from "@screens/Video";
 
-const Tab = createBottomTabNavigator();
+type TTabRoutes = {
+  MatchSettings: undefined;
+  Finances: undefined;
+  PlayersList: undefined;
+  Rankings: undefined;
+  SignIn: undefined;
+  SignUp: undefined;
+  WatchVideos: undefined;
+};
+
+export type TabNavigatorRoutesProps = BottomTabNavigationProp<TTabRoutes>;
+
+const { Navigator, Screen } = createBottomTabNavigator<TTabRoutes>();
 
 export const TabRoutes = () => {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen
+    <Navigator screenOptions={{ headerShown: false, }}>
+      <Screen
         name="PlayersList"
         component={PlayersList}
         options={{
@@ -23,7 +38,7 @@ export const TabRoutes = () => {
           tabBarLabel: "Lista de jogadores",
         }}
       />
-      <Tab.Screen
+      <Screen
         name="MatchSettings"
         component={MatchSettings}
         options={{
@@ -33,7 +48,7 @@ export const TabRoutes = () => {
           tabBarLabel: "Configurações da partida",
         }}
       />
-      <Tab.Screen
+      <Screen
         name="Finances"
         component={Finances}
         options={{
@@ -43,7 +58,7 @@ export const TabRoutes = () => {
           tabBarLabel: "Finances",
         }}
       />
-      <Tab.Screen
+      <Screen
         name="SignIn"
         component={SignIn}
         options={{
@@ -53,7 +68,7 @@ export const TabRoutes = () => {
           tabBarLabel: "SignIn",
         }}
       />
-      <Tab.Screen
+      <Screen
         name="Rankings"
         component={WatchVideos}
         options={{
@@ -63,6 +78,6 @@ export const TabRoutes = () => {
           tabBarLabel: "Rankings",
         }}
       />
-    </Tab.Navigator>
+    </Navigator>
   );
 };
