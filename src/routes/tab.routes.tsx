@@ -10,6 +10,7 @@ import { Rankings } from "@screens/Rankings";
 import { SignIn } from "@screens/SignIn";
 import { SignUp } from "@screens/SignUp";
 import { WatchVideos } from "@screens/Video";
+import { useTheme } from "styled-components";
 
 type TTabRoutes = {
   MatchSettings: undefined;
@@ -26,8 +27,15 @@ export type TabNavigatorRoutesProps = BottomTabNavigationProp<TTabRoutes>;
 const { Navigator, Screen } = createBottomTabNavigator<TTabRoutes>();
 
 export const TabRoutes = () => {
+  const { COLORS } = useTheme();
   return (
-    <Navigator screenOptions={{ headerShown: false, }}>
+    <Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: COLORS.BLUE_400,
+        tabBarInactiveTintColor: COLORS.BLUE_100,
+      }}
+    >
       <Screen
         name="PlayersList"
         component={PlayersList}
