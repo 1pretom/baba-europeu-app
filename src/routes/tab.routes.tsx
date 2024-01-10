@@ -11,6 +11,7 @@ import { SignIn } from "@screens/SignIn";
 import { SignUp } from "@screens/SignUp";
 import { WatchVideos } from "@screens/Video";
 import { useTheme } from "styled-components";
+import { Platform } from "react-native";
 
 type TTabRoutes = {
   MatchSettings: undefined;
@@ -33,7 +34,14 @@ export const TabRoutes = () => {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: COLORS.BLUE_400,
-        tabBarInactiveTintColor: COLORS.BLUE_100,
+        tabBarInactiveTintColor: COLORS.BLUE_200,
+        tabBarStyle: {
+          backgroundColor: COLORS.GRAY_200,
+          borderTopWidth: 0,
+          height: "8%",
+          paddingBottom: 5,
+          paddingTop: 5
+        },
       }}
     >
       <Screen
