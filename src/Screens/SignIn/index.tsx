@@ -6,12 +6,16 @@ import { Highlight } from "@components/Highlight";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import * as CONSTANT from "./constants";
-import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 
 export const SignIn = () => {
-  const navigation = useNavigation<AuthNavigatorRoutesProps>();
+  const navigation = useNavigation();
   const handlePressSignup = () => {
     navigation.navigate("SignUp");
+  };
+
+  const handlePressSingIn = () => {
+    console.log("sign in pressed");
+    navigation.navigate("PlayersList");
   };
 
   return (
@@ -36,7 +40,10 @@ export const SignIn = () => {
               secureTextEntry
               autoCapitalize="none"
             />
-            <Button title={CONSTANT.ACCESS_BUTTON_TITLE} onPress={() => {}} />
+            <Button
+              title={CONSTANT.ACCESS_BUTTON_TITLE}
+              onPress={handlePressSingIn}
+            />
           </S.Form>
           <S.ButtonContainer>
             <S.SignInText>{CONSTANT.ENTER_THE_BABA_TEXT}</S.SignInText>

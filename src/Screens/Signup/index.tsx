@@ -9,10 +9,9 @@ import { ScrollView } from "react-native-gesture-handler";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import * as CONSTANT from "./constants";
 import { ButtonIcon } from "@components/ButtonIcon";
-import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 
 export const SignUp = () => {
-  const navigation = useNavigation<AuthNavigatorRoutesProps>();
+  const navigation = useNavigation();
   const [date, setDate] = useState<Date | null>(null);
   const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
   const [position, setPosition] = useState<string>();
@@ -29,6 +28,10 @@ export const SignUp = () => {
   const handleInputPress = () => {
     setShowDatePicker(true);
   };
+  const handleCreateAccount =()=>{
+    navigation.navigate("PlayersList");
+
+  }
   return (
     <S.Container>
       <ScrollView
@@ -110,7 +113,7 @@ export const SignUp = () => {
             />
             <Button
               title={CONSTANT.CREATE_AND_ENTER_BUTTON_TITLE}
-              onPress={() => {}}
+              onPress={handleCreateAccount}
             />
           </S.Form>
           <S.ButtonContainer>
