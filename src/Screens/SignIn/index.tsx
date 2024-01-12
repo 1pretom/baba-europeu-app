@@ -6,6 +6,7 @@ import { Highlight } from "@components/Highlight";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import * as CONSTANT from "./constants";
+import { Skeleton } from "moti/skeleton";
 
 export const SignIn = () => {
   const navigation = useNavigation();
@@ -20,6 +21,7 @@ export const SignIn = () => {
 
   return (
     <S.Container>
+      <Skeleton/>
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={false}
