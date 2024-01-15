@@ -9,6 +9,11 @@ export declare global {
       SignUp: undefined;
       SignIn: undefined;
       PlayersList: undefined;
+      MatchSettings: undefined;
+      Finances: undefined;
+      Rankings: undefined;
+      WatchVideos: undefined;
     }
+    
   }
 }

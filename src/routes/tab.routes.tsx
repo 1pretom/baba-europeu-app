@@ -11,17 +11,7 @@ import { SignIn } from "@screens/SignIn";
 import { SignUp } from "@screens/SignUp";
 import { WatchVideos } from "@screens/Video";
 import { useTheme } from "styled-components";
-import { Platform } from "react-native";
-
-type TTabRoutes = {
-  MatchSettings: undefined;
-  Finances: undefined;
-  PlayersList: undefined;
-  Rankings: undefined;
-  SignIn: undefined;
-  SignUp: undefined;
-  WatchVideos: undefined;
-};
+import { TTabRoutes } from "./types";
 
 export type TabNavigatorRoutesProps = BottomTabNavigationProp<TTabRoutes>;
 
@@ -40,7 +30,7 @@ export const TabRoutes = () => {
           borderTopWidth: 0,
           height: "8%",
           paddingBottom: 5,
-          paddingTop: 5
+          paddingTop: 5,
         },
       }}
     >
