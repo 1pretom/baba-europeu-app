@@ -6,7 +6,7 @@ import { UserHeader } from "@components/UserHeader";
 export const MatchSettings = () => {
   return (
     <S.Container>
-      <UserHeader name='washigtn' />
+      <UserHeader name='Washigton' />
 
       <S.TextInsideImage>Configurações da partida</S.TextInsideImage>
     </S.Container>
