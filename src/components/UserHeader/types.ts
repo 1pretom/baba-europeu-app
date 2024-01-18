@@ -1,3 +1,4 @@
-export type TUserHeaderProps ={
-    name:string
-}
+export type TUserHeaderProps = {
+  name: string;
+  onPress?: () => void;
+};

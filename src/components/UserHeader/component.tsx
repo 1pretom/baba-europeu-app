@@ -3,7 +3,7 @@ import * as S from "./styles";
 import { TUserHeaderProps } from "./types";
 import { ButtonIcon } from "@components/ButtonIcon";
 
-export const UserHeader = ({ name }: TUserHeaderProps) => {
+export const UserHeader = ({ name, onPress }: TUserHeaderProps) => {
   return (
     <S.Container>
       <UserPhoto
@@ -12,7 +12,7 @@ export const UserHeader = ({ name }: TUserHeaderProps) => {
       />
       <S.Saudation>Olá</S.Saudation>
       <S.UserName>{name}</S.UserName>
-      <ButtonIcon icon="logout" />
+      <ButtonIcon icon="logout" onPress={onPress} />
     </S.Container>
   );
 };
