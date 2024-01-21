@@ -18,3 +18,8 @@ export const TextInsideImage = styled.Text`
   background-color: #000000a0;
 `;
 
+export const Form = styled.View`
+  width: 100%;
+  border-radius: 6px;
+  padding: 16px;
+`;
