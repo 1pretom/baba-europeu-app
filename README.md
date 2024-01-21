@@ -51,3 +51,4 @@ This project is licensed under the MIT License.
 - **Technology stack:** React Native, TypeScript
 - **Development status:** Under active development
 - **Contact:** Feel free to reach out to [@1pretom](https://github.com/1pretom) for any questions or feedback.
+- **Self-reminder** Use prisma: [Prisma](https://www.prisma.io/docs)
