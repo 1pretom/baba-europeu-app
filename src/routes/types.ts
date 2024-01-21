@@ -1,5 +1,5 @@
 export type TTabRoutes = {
-  MatchSettings: undefined;
+  Profile: undefined;
   Finances: undefined;
   PlayersList: undefined;
   Rankings: undefined;

@@ -9,7 +9,7 @@ export declare global {
       SignUp: undefined;
       SignIn: undefined;
       PlayersList: undefined;
-      MatchSettings: undefined;
+      Profile: undefined;
       Finances: undefined;
       Rankings: undefined;
       WatchVideos: undefined;

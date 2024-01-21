@@ -4,7 +4,7 @@ import {
 } from "@react-navigation/bottom-tabs";
 import { Finances } from "../Screens/Finances";
 import { Feather } from "@expo/vector-icons";
-import { MatchSettings } from "@screens/MatchSettings";
+import { Profile } from "@screens/Profile";
 import { PlayersList } from "@screens/PlayersList";
 import { Rankings } from "@screens/Rankings";
 import { SignIn } from "@screens/SignIn";
@@ -45,13 +45,13 @@ export const TabRoutes = () => {
         }}
       />
       <Screen
-        name="MatchSettings"
-        component={MatchSettings}
+        name="Profile"
+        component={Profile}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Feather name="settings" color={color} size={size} />
+            <Feather name="user" color={color} size={size} />
           ),
-          tabBarLabel: "Configurações da partida",
+          tabBarLabel: "Perfil",
         }}
       />
       <Screen

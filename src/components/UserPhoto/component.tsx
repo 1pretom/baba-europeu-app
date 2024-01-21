@@ -1,14 +1,16 @@
-import { Image } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 import { TUserPhotoProps } from "./types";
 
-export const UserPhoto = ({ size, ...rest }: TUserPhotoProps) => {
+export const UserPhoto = ({onPress, size, ...rest }: TUserPhotoProps) => {
   return (
-    <Image
-      style={{ marginRight: 4, borderWidth: 2, borderColor: "red" }}
-      borderRadius={30}
-      height={size}
-      width={size}
-      {...rest}
-    />
+    <TouchableOpacity onPress={onPress}>
+      <Image
+        style={{ marginRight: 4, borderWidth: 2, borderColor: "red" }}
+        borderRadius={30}
+        height={size}
+        width={size}
+        {...rest}
+      />
+    </TouchableOpacity>
   );
 };

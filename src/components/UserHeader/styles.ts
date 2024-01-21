@@ -1,13 +1,13 @@
 import styled from "styled-components/native";
-import { MaterialIcons } from "@expo/vector-icons";
 
 export const Container = styled.View`
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
 `;
 export const Saudation = styled.Text`
-  color: yellow;
+  color: ${({ theme }) => theme.COLORS.GRAY_700};
 `;
 export const UserName = styled.Text`
-  color: red;
+  color: ${({ theme }) => theme.COLORS.GRAY_700};
 `;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Linking } from "react-native";
-import * as S from './styles';
+import * as S from "./styles";
 
 const PedidoDeNamoro = () => {
   const [noButtonPosition, setNoButtonPosition] = useState({
