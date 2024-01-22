@@ -18,7 +18,8 @@ export const Container = styled(TouchableOpacity)<TButtonType>`
   justify-content: center;
   align-items: center;
   border: 2px;
-  border-color: ${({ theme }) => theme.COLORS.BLUE_400};
+  border-color: ${({ theme, type }) =>
+    type === "FOURTIARY" ? null : theme.COLORS.BLUE_400};
 `;
 
 export const Title = styled(Text)<TButtonType>`

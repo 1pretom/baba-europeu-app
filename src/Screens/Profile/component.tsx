@@ -14,21 +14,20 @@ export const Profile = () => {
           marginTop: 6,
           padding: 10,
         }}
-        size={140}
+        size={100}
         alt="Foto do usuário"
         source={{ uri: "http://github.com/1pretom.png" }}
       />
+      <S.PhotoChange title="Alterar foto" type="FOURTIARY" />
       <S.Form>
         <Input placeholder="nome" />
-        <Input placeholder="email" />
+        <S.DisabledInput placeholder="washington@email.com" editable={false} />
       </S.Form>
       <S.Form>
         <Text>Alterar senha</Text>
-        <Input placeholder="senha antiga" />
+        <Input placeholder="Senha antiga" />
         <Input placeholder="Nova senha" />
       </S.Form>
-
-      <S.TextInsideImage>Configurações da partida</S.TextInsideImage>
     </S.Container>
   );
 };

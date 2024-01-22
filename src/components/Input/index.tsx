@@ -1,4 +1,3 @@
-import { TextInputProps } from "react-native";
 import * as S from "./styles";
 import { useTheme } from "styled-components/native";
 import { TInputProps } from "./types";
