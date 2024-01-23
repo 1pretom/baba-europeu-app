@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Alert, Modal, Text, View } from "react-native";
+import { Alert, FlatList, Modal, Text, View } from "react-native";
 import { Players } from "../Players/component";
 import * as S from "./styles";
 import * as CONSTANT from "./constants";
-import { FlashList } from "@shopify/flash-list";
 import { Input } from "@components/Input";
 import { ButtonIcon } from "@components/ButtonIcon";
 import { Button } from "@components/Button";
@@ -79,10 +78,10 @@ export const NextFut = () => {
           />
         </S.Fomr>
       </S.Content>
-      <FlashList
-        estimatedItemSize={50}
+      <FlatList
+        showsVerticalScrollIndicator={false}
         data={players}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(index) => index.toString()}
         renderItem={({ item, index }) => (
           <Players
             key={item}
@@ -96,11 +95,7 @@ export const NextFut = () => {
       <S.Name>Quantidade de jogadores por time:</S.Name>
 
       <S.Fomr>
-        <Input
-          value={playersByTeam.toString()}
-          style={{ flex: 1 }}
-          onFocus={() => setPlayerModalVisible(true)}
-        />
+        <Input editable={false} value={playersByTeam.toString()} />
         <ButtonIcon onPress={() => setPlayerModalVisible(true)} icon="add" />
         <Modal
           animationType="slide"
@@ -127,11 +122,7 @@ export const NextFut = () => {
       </S.Fomr>
       <S.Name>Quantidade de times:</S.Name>
       <S.Fomr>
-        <Input
-          value={numberOfTeams.toString()}
-          style={{ flex: 1 }}
-          onFocus={() => setTeamsModalVisible(true)}
-        />
+        <Input editable={false} value={numberOfTeams.toString()} />
         <ButtonIcon onPress={() => setTeamsModalVisible(true)} icon="add" />
         <Modal
           animationType="slide"
@@ -165,9 +156,9 @@ export const NextFut = () => {
       {teams.length > 0 && (
         <S.Content>
           <S.Name>Resultado:</S.Name>
-          {teams.map((team, index) => (
+          {teams.map((player, index) => (
             <View key={index}>
-              <Text>{`Time ${index + 1}: ${team.join(", ")}`}</Text>
+              <Text>{`Time ${index + 1}: ${player.join(", ")}`}</Text>
             </View>
           ))}
         </S.Content>
