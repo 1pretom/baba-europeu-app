@@ -17,9 +17,8 @@ export const Container = styled(TouchableOpacity)<TButtonType>`
   border-radius: 6px;
   justify-content: center;
   align-items: center;
-  border: 2px;
-  border-color: ${({ theme, type }) =>
-    type === "FOURTIARY" ? null : theme.COLORS.BLUE_400};
+  border: ${({ type }) => (type === "FOURIER" ? 0 : 2)}px;
+  border-color: ${({ theme }) => theme.COLORS.BLUE_400};
 `;
 
 export const Title = styled(Text)<TButtonType>`

@@ -1,10 +1,11 @@
-import { Input } from "@components/Input";
-import { Container } from "styles";
+import * as S from "./styles";
+import { TFormProps } from "./types";
 
-export const Form = () => {
+export const Form = ({ children, title }: TFormProps) => {
   return (
-    <Container>
-      <Input />
-    </Container>
+    <S.Container>
+      <S.TitleText>{title}</S.TitleText>
+      {children}
+    </S.Container>
   );
 };

@@ -1,6 +1,6 @@
 import { TouchableOpacityProps } from "react-native";
 
-export type ButtonTypeStyle = "PRIMARY" | "SECONDARY" | "TERTIARY" | 'FOURTIARY';
+export type ButtonTypeStyle = "PRIMARY" | "SECONDARY" | "TERTIARY" | 'FOURIER';
 
 export type TButtonType = {
   type: ButtonTypeStyle;
