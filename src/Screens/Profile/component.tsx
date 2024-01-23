@@ -3,6 +3,7 @@ import React from "react";
 import { UserPhoto } from "@components/UserPhoto";
 import { Input } from "@components/Input";
 import { Text } from "react-native";
+import { Form } from "@components/Form";
 
 export const Profile = () => {
   return (
@@ -19,15 +20,14 @@ export const Profile = () => {
         source={{ uri: "http://github.com/1pretom.png" }}
       />
       <S.PhotoChange title="Alterar foto" type="FOURTIARY" />
-      <S.Form>
+      <Form>
         <Input placeholder="nome" />
-        <S.DisabledInput placeholder="washington@email.com" editable={false} />
-      </S.Form>
-      <S.Form>
-        <Text>Alterar senha</Text>
+        <S.DisabledInput value="washington@email.com" editable={false} />
+      </Form>
+      <Form title="Alterar senha">
         <Input placeholder="Senha antiga" />
         <Input placeholder="Nova senha" />
-      </S.Form>
+      </Form>
     </S.Container>
   );
 };

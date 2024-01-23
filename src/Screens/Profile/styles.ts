@@ -21,13 +21,6 @@ export const TextInsideImage = styled.Text`
   background-color: #000000a0;
 `;
 
-export const Form = styled.View`
-  margin-top: 10px;
-  width: 100%;
-  border-radius: 6px;
-  padding: 16px;
-`;
-
 export const DisabledInput = styled(Input)`
   background-color: ${({ theme }) => theme.COLORS.GRAY_400};
 `;
