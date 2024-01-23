@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+
 export const Container = styled.View`
   flex: 1;
   justify-content: "center";
@@ -21,10 +22,6 @@ export const Button = styled.TouchableOpacity`
 export const ButtonText = styled.Text`
   color: ${({ theme }) => theme.COLORS.RED};
   font-size: ${({ theme }) => theme.fontSize.md}px;
-`;
-
-export const PickerView = styled.View`
-  background-color: ${({ theme }) => theme.COLORS.RED};
 `;
 
 export const Content = styled.View`
