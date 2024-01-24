@@ -157,9 +157,9 @@ export const NextFut = () => {
         <S.Content>
           <S.Name>Resultado:</S.Name>
           {teams.map((player, index) => (
-            <View key={index}>
-              <Text>{`Time ${index + 1}: ${player.join(", ")}`}</Text>
-            </View>
+            <S.Content key={index}>
+              <S.Name>{`Time ${index + 1}: ${player.join(", ")}`}</S.Name>
+            </S.Content>
           ))}
         </S.Content>
       )}
