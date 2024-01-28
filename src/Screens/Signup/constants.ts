@@ -5,6 +5,7 @@ export const NAME_PLACEHOLDER = "Nome";
 export const NICKNAME_PLACEHOLDER = "Apelido";
 export const POSITION_PLACEHOLDER = "Posição";
 export const PASSWORD_PLACEHOLDER = "Senha";
+export const PASSWORD_CONFIRMATION_PLACEHOLDER = "Confirme a senha";
 export const CREATE_AND_ENTER_BUTTON_TITLE = "Criar e entrar";
 export const ALREADY_HAVE_ACCOUNT_TEXT = "Já tem conta?";
 export const BACK_TO_LOGIN_BUTTON_TITLE = "Voltar pro login";

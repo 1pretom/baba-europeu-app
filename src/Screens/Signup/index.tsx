@@ -16,6 +16,10 @@ export const SignUp = () => {
   const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
   const [position, setPosition] = useState<string>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
 
   const handleGoBack = () => {
     navigation.navigate("SignIn");
@@ -28,10 +32,9 @@ export const SignUp = () => {
   const handleInputPress = () => {
     setShowDatePicker(true);
   };
-  const handleCreateAccount =()=>{
+  const handleSignUp = () => {
     navigation.navigate("PlayersList");
-
-  }
+  };
   return (
     <S.Container>
       <ScrollView
@@ -48,8 +51,12 @@ export const SignUp = () => {
               placeholder={CONSTANT.EMAIL_PLACEHOLDER}
               keyboardType="email-address"
               autoCapitalize="none"
+              onChangeText={setEmail}
             />
-            <Input placeholder={CONSTANT.NAME_PLACEHOLDER} />
+            <Input
+              placeholder={CONSTANT.NAME_PLACEHOLDER}
+              onChangeText={setName}
+            />
             <Input placeholder={CONSTANT.NICKNAME_PLACEHOLDER} />
             <S.Fomrs>
               <Input
@@ -110,10 +117,17 @@ export const SignUp = () => {
               placeholder={CONSTANT.PASSWORD_PLACEHOLDER}
               secureTextEntry
               autoCapitalize="none"
+              onChangeText={setPassword}
+            />
+            <Input
+              placeholder={CONSTANT.PASSWORD_CONFIRMATION_PLACEHOLDER}
+              secureTextEntry
+              autoCapitalize="none"
+              onChangeText={setPasswordConfirm}
             />
             <Button
               title={CONSTANT.CREATE_AND_ENTER_BUTTON_TITLE}
-              onPress={handleCreateAccount}
+              onPress={handleSignUp}
             />
           </S.Form>
           <S.ButtonContainer>
