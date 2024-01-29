@@ -4,3 +4,13 @@ export type TPosition = {
   icon?: string;
   testID?: string;
 };
+
+export type FormDataProps = {
+  name: string;
+  email: string;
+  nickname: string;
+  position: string;
+  password: string;
+  passwordConfirm: string;
+  dateOfBirth: string;
+};

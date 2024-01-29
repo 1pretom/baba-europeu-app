@@ -10,6 +10,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import * as CONSTANT from "./constants";
 import { ButtonIcon } from "@components/ButtonIcon";
 import { useForm, Controller } from "react-hook-form";
+import { FormDataProps } from "./types";
 
 export const SignUp = () => {
   const navigation = useNavigation();
@@ -18,7 +19,7 @@ export const SignUp = () => {
   const [position, setPosition] = useState<string>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit } = useForm<FormDataProps>();
 
   const handleGoBack = () => {
     navigation.navigate("SignIn");
@@ -31,13 +32,13 @@ export const SignUp = () => {
   const handleInputPress = () => {
     setShowDatePicker(true);
   };
-  const handleSignUp = (data: any) => {
+  const handleSignUp = (data: FormDataProps) => {
     // navigation.navigate("PlayersList");
     const signUpData = {
       ...data,
       position: position,
       dateOfBirth: date,
-    }
+    };
     console.log(signUpData);
   };
   return (
