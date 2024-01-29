@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, TouchableOpacity, Text, View } from "react-native";
+import { Modal, TouchableOpacity } from "react-native";
 import * as S from "./styles";
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
@@ -9,6 +9,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import * as CONSTANT from "./constants";
 import { ButtonIcon } from "@components/ButtonIcon";
+import { useForm, Controller } from "react-hook-form";
 
 export const SignUp = () => {
   const navigation = useNavigation();
@@ -16,10 +17,8 @@ export const SignUp = () => {
   const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
   const [position, setPosition] = useState<string>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
+
+  const { control, handleSubmit } = useForm();
 
   const handleGoBack = () => {
     navigation.navigate("SignIn");
@@ -32,8 +31,14 @@ export const SignUp = () => {
   const handleInputPress = () => {
     setShowDatePicker(true);
   };
-  const handleSignUp = () => {
-    navigation.navigate("PlayersList");
+  const handleSignUp = (data: any) => {
+    // navigation.navigate("PlayersList");
+    const signUpData = {
+      ...data,
+      position: position,
+      dateOfBirth: date,
+    }
+    console.log(signUpData);
   };
   return (
     <S.Container>
@@ -47,25 +52,61 @@ export const SignUp = () => {
             subtitle={CONSTANT.HIGHLIGHT_SUBTITLE}
           />
           <S.Form>
-            <Input
-              placeholder={CONSTANT.EMAIL_PLACEHOLDER}
-              keyboardType="email-address"
-              autoCapitalize="none"
-              onChangeText={setEmail}
+            <Controller
+              name="email"
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  placeholder={CONSTANT.EMAIL_PLACEHOLDER}
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                  onChangeText={onChange}
+                  value={value}
+                />
+              )}
             />
-            <Input
-              placeholder={CONSTANT.NAME_PLACEHOLDER}
-              onChangeText={setName}
+            <Controller
+              name="name"
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  placeholder={CONSTANT.NAME_PLACEHOLDER}
+                  onChangeText={onChange}
+                  value={value}
+                />
+              )}
             />
-            <Input placeholder={CONSTANT.NICKNAME_PLACEHOLDER} />
+            <Controller
+              name="nickname"
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  placeholder={CONSTANT.NICKNAME_PLACEHOLDER}
+                  onChangeText={onChange}
+                  value={value}
+                />
+              )}
+            />
             <S.Fomrs>
-              <Input
-                placeholder={CONSTANT.POSITION_PLACEHOLDER}
-                value={position}
-                style={{ flex: 1 }}
-                onFocus={() => setModalVisible(true)}
+              <Controller
+                name="position"
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <S.Fomrs>
+                    <Input
+                      placeholder={CONSTANT.POSITION_PLACEHOLDER}
+                      value={position}
+                      style={{ flex: 1 }}
+                      onFocus={() => setModalVisible(true)}
+                      onChangeText={onChange}
+                    />
+                    <ButtonIcon
+                      onPress={() => setModalVisible(true)}
+                      icon="add"
+                    />
+                  </S.Fomrs>
+                )}
               />
-              <ButtonIcon onPress={() => setModalVisible(true)} icon="add" />
               <Modal
                 animationType="slide"
                 transparent={true}
@@ -98,14 +139,20 @@ export const SignUp = () => {
                 </TouchableOpacity>
               </Modal>
             </S.Fomrs>
-
-            <Input
-              value={
-                date
-                  ? date.toLocaleDateString()
-                  : CONSTANT.DATE_OF_BIRTH_PLACEHOLDER
-              }
-              onFocus={handleInputPress}
+            <Controller
+              name="dateOfBirth"
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  value={
+                    date
+                      ? date.toLocaleDateString()
+                      : CONSTANT.DATE_OF_BIRTH_PLACEHOLDER
+                  }
+                  onFocus={handleInputPress}
+                  onChangeText={onChange}
+                />
+              )}
             />
             {showDatePicker && (
               <DateTimePicker
@@ -113,21 +160,37 @@ export const SignUp = () => {
                 onChange={handleDateChange}
               />
             )}
-            <Input
-              placeholder={CONSTANT.PASSWORD_PLACEHOLDER}
-              secureTextEntry
-              autoCapitalize="none"
-              onChangeText={setPassword}
+            <Controller
+              name="password"
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  placeholder={CONSTANT.PASSWORD_PLACEHOLDER}
+                  secureTextEntry
+                  autoCapitalize="none"
+                  onChangeText={onChange}
+                  value={value}
+                />
+              )}
             />
-            <Input
-              placeholder={CONSTANT.PASSWORD_CONFIRMATION_PLACEHOLDER}
-              secureTextEntry
-              autoCapitalize="none"
-              onChangeText={setPasswordConfirm}
+            <Controller
+              name="passwordConfirm"
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  placeholder={CONSTANT.PASSWORD_CONFIRMATION_PLACEHOLDER}
+                  secureTextEntry
+                  autoCapitalize="none"
+                  onChangeText={onChange}
+                  value={value}
+                  onSubmitEditing={handleSubmit(handleSignUp)}
+                  returnKeyType="send"
+                />
+              )}
             />
             <Button
               title={CONSTANT.CREATE_AND_ENTER_BUTTON_TITLE}
-              onPress={handleSignUp}
+              onPress={handleSubmit(handleSignUp)}
             />
           </S.Form>
           <S.ButtonContainer>
