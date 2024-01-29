@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, TouchableOpacity } from "react-native";
+import { Modal, Text, TouchableOpacity } from "react-native";
 import * as S from "./styles";
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
@@ -19,7 +19,11 @@ export const SignUp = () => {
   const [position, setPosition] = useState<string>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
-  const { control, handleSubmit } = useForm<FormDataProps>();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormDataProps>();
 
   const handleGoBack = () => {
     navigation.navigate("SignIn");
@@ -36,7 +40,7 @@ export const SignUp = () => {
     // navigation.navigate("PlayersList");
     const signUpData = {
       ...data,
-      position: position,
+      position,
       dateOfBirth: date,
     };
     console.log(signUpData);
@@ -54,6 +58,13 @@ export const SignUp = () => {
           />
           <S.Form>
             <Controller
+              rules={{
+                required: "Tem email não é?",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "E-mail inválido",
+                },
+              }}
               name="email"
               control={control}
               render={({ field: { onChange, value } }) => (
@@ -66,6 +77,7 @@ export const SignUp = () => {
                 />
               )}
             />
+            <Text>{errors.email?.message}</Text>
             <Controller
               name="name"
               control={control}
