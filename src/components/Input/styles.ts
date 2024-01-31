@@ -15,3 +15,13 @@ export const Container = styled(TextInput)`
   border-radius: 6px;
   padding: 16px;
 `;
+export const ErrorMessage = styled.Text`
+  ${({ theme }) => css`
+    color: ${theme.COLORS.RED_DARK};
+    font-family: ${theme.fonts.regular};
+    font-size: ${theme.fontSize.md}px;
+  `}
+  margin-left: 2%;
+  justify-content: center;
+  align-items: center;
+`;

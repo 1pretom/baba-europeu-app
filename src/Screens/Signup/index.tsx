@@ -74,11 +74,12 @@ export const SignUp = () => {
                   autoCapitalize="none"
                   onChangeText={onChange}
                   value={value}
+                  errorMessage={errors.email?.message}
                 />
               )}
             />
-            <Text>{errors.email?.message}</Text>
             <Controller
+              rules={{ required: "Tem nome não é?" }}
               name="name"
               control={control}
               render={({ field: { onChange, value } }) => (
@@ -86,6 +87,7 @@ export const SignUp = () => {
                   placeholder={CONSTANT.NAME_PLACEHOLDER}
                   onChangeText={onChange}
                   value={value}
+                  errorMessage={errors.name?.message}
                 />
               )}
             />
