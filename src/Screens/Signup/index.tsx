@@ -37,7 +37,7 @@ export const SignUp = () => {
     setShowDatePicker(true);
   };
   const handleSignUp = (data: FormDataProps) => {
-    // navigation.navigate("PlayersList");
+    navigation.navigate("PlayersList", signUpData);
     const signUpData = {
       ...data,
       position,
