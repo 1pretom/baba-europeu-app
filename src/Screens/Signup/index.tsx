@@ -37,12 +37,12 @@ export const SignUp = () => {
     setShowDatePicker(true);
   };
   const handleSignUp = (data: FormDataProps) => {
-    navigation.navigate("PlayersList", signUpData);
     const signUpData = {
       ...data,
       position,
       dateOfBirth: date,
     };
+    navigation.navigate("PlayersList", { signed: signUpData });
     console.log(signUpData);
   };
   return (
