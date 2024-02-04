@@ -20,6 +20,15 @@ const signUpSchema = yup.object({
     .string()
     .required("Tem email não é?")
     .email("Esse email tá errado, vei"),
+  password: yup
+    .string()
+    .required("Vai acessar como se não tem senha?")
+    .min(6, "A senha deve ter no mínimo 6 digitos"),
+  passwordConfirm: yup
+    .string()
+    .required("Confirme a senha")
+    .oneOf([yup.ref("password")], "As senhas devem ser iguais"),
+  dateOfBirthpassword: yup.date().required("Nasceu nunca?"),
 });
 
 export const SignUp = () => {
@@ -34,7 +43,7 @@ export const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormDataProps>({
-    resolver: yupResolver(signUpSchema),
+    resolver: yupResolver(signUpSchema) as any,
   });
 
   const handleGoBack = () => {
@@ -170,6 +179,7 @@ export const SignUp = () => {
                   }
                   onFocus={handleInputPress}
                   onChangeText={onChange}
+                  errorMessage={errors.dateOfBirth?.message}
                 />
               )}
             />
@@ -189,6 +199,7 @@ export const SignUp = () => {
                   autoCapitalize="none"
                   onChangeText={onChange}
                   value={value}
+                  errorMessage={errors.password?.message}
                 />
               )}
             />
@@ -204,6 +215,7 @@ export const SignUp = () => {
                   value={value}
                   onSubmitEditing={handleSubmit(handleSignUp)}
                   returnKeyType="send"
+                  errorMessage={errors.passwordConfirm?.message}
                 />
               )}
             />
