@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Text, TouchableOpacity } from "react-native";
+import { Modal, TouchableOpacity } from "react-native";
 import * as S from "./styles";
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
@@ -11,6 +11,16 @@ import * as CONSTANT from "./constants";
 import { ButtonIcon } from "@components/ButtonIcon";
 import { useForm, Controller } from "react-hook-form";
 import { FormDataProps } from "./types";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const signUpSchema = yup.object({
+  name: yup.string().required("Tem nome não é?"),
+  email: yup
+    .string()
+    .required("Tem email não é?")
+    .email("Esse email tá errado, vei"),
+});
 
 export const SignUp = () => {
   const navigation = useNavigation();
@@ -23,7 +33,9 @@ export const SignUp = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormDataProps>();
+  } = useForm<FormDataProps>({
+    resolver: yupResolver(signUpSchema),
+  });
 
   const handleGoBack = () => {
     navigation.navigate("SignIn");
@@ -58,13 +70,18 @@ export const SignUp = () => {
           />
           <S.Form>
             <Controller
-              rules={{
-                required: "Tem email não é?",
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "E-mail inválido",
-                },
-              }}
+              name="name"
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  placeholder={CONSTANT.NAME_PLACEHOLDER}
+                  onChangeText={onChange}
+                  value={value}
+                  errorMessage={errors.name?.message}
+                />
+              )}
+            />
+            <Controller
               name="email"
               control={control}
               render={({ field: { onChange, value } }) => (
@@ -75,19 +92,6 @@ export const SignUp = () => {
                   onChangeText={onChange}
                   value={value}
                   errorMessage={errors.email?.message}
-                />
-              )}
-            />
-            <Controller
-              rules={{ required: "Tem nome não é?" }}
-              name="name"
-              control={control}
-              render={({ field: { onChange, value } }) => (
-                <Input
-                  placeholder={CONSTANT.NAME_PLACEHOLDER}
-                  onChangeText={onChange}
-                  value={value}
-                  errorMessage={errors.name?.message}
                 />
               )}
             />
