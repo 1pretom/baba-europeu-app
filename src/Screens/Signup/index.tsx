@@ -13,6 +13,7 @@ import { useForm, Controller } from "react-hook-form";
 import { FormDataProps } from "./types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { Form } from "@components/Form";
 
 const signUpSchema = yup.object({
   name: yup.string().required("Tem nome não é?"),
@@ -115,12 +116,12 @@ export const SignUp = () => {
                 />
               )}
             />
-            <S.Fomrs>
+            <Form>
               <Controller
                 name="position"
                 control={control}
                 render={({ field: { onChange, value } }) => (
-                  <S.Fomrs>
+                  <Form>
                     <Input
                       placeholder={CONSTANT.POSITION_PLACEHOLDER}
                       value={position}
@@ -132,7 +133,7 @@ export const SignUp = () => {
                       onPress={() => setModalVisible(true)}
                       icon="add"
                     />
-                  </S.Fomrs>
+                  </Form>
                 )}
               />
               <Modal
@@ -166,7 +167,7 @@ export const SignUp = () => {
                   ))}
                 </TouchableOpacity>
               </Modal>
-            </S.Fomrs>
+            </Form>
             <Controller
               name="dateOfBirth"
               control={control}
