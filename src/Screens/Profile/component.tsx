@@ -7,6 +7,7 @@ import { Button } from "@components/Button";
 import * as ImagePicker from "expo-image-picker";
 import { Alert } from "react-native";
 import { Loading } from "@components/Loading";
+import * as FileSystem from "expo-file-system";
 
 export const Profile = () => {
   const [userPhoto, setUserPhoto] = useState(
@@ -27,6 +28,14 @@ export const Profile = () => {
         return Alert.alert("Quer trocar a foto não é? Beleza então");
       }
       if (photoSelected.assets[0].uri) {
+        const photoInfo = await FileSystem.getInfoAsync(
+          photoSelected.assets[0].uri
+        );
+        const {size}: any = photoInfo
+        if (size && (size / 1024 / 1024) > 10) {
+          return Alert.alert("Tá muito grande, escolha uma foto com menos MB");
+        }
+
         setUserPhoto(photoSelected.assets[0].uri);
       }
     } catch (error) {
@@ -52,6 +61,7 @@ export const Profile = () => {
             size={100}
             alt="Foto do usuário"
             source={{ uri: userPhoto }}
+            onPress={handleUserPhotoSelection}
           />
         )}
         <Button
