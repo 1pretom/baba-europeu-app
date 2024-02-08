@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, TouchableOpacity } from "react-native";
+import { Alert, Modal, TouchableOpacity } from "react-native";
 import * as S from "./styles";
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
@@ -14,6 +14,8 @@ import { FormDataProps } from "./types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Form } from "@components/Form";
+import { api } from "@services/api";
+import axios from "axios";
 
 const signUpSchema = yup.object({
   name: yup.string().required("Tem nome não é?"),
@@ -58,15 +60,29 @@ export const SignUp = () => {
   const handleInputPress = () => {
     setShowDatePicker(true);
   };
-  const handleSignUp = (data: FormDataProps) => {
+
+  const handleSignUp = async (data: FormDataProps) => {
     const signUpData = {
       ...data,
       position,
       dateOfBirth: date,
     };
-    navigation.navigate("PlayersList", { signed: signUpData });
-    console.log(signUpData);
+
+    try {
+      const response = await api.post("/users", signUpData);
+      console.log("🚀 ~ handleSignUp ~ response:", response.data);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        Alert.alert(
+          "🚀 ~ handleSignUp ~ error:",
+          error?.response?.data?.message
+        );
+      }
+    } finally {
+      navigation.navigate("PlayersList");
+    }
   };
+
   return (
     <S.Container>
       <ScrollView
@@ -116,12 +132,12 @@ export const SignUp = () => {
                 />
               )}
             />
-            <Form>
+            <S.Fomrs>
               <Controller
                 name="position"
                 control={control}
                 render={({ field: { onChange, value } }) => (
-                  <Form>
+                  <S.Fomrs>
                     <Input
                       placeholder={CONSTANT.POSITION_PLACEHOLDER}
                       value={position}
@@ -133,7 +149,7 @@ export const SignUp = () => {
                       onPress={() => setModalVisible(true)}
                       icon="add"
                     />
-                  </Form>
+                  </S.Fomrs>
                 )}
               />
               <Modal
@@ -167,7 +183,7 @@ export const SignUp = () => {
                   ))}
                 </TouchableOpacity>
               </Modal>
-            </Form>
+            </S.Fomrs>
             <Controller
               name="dateOfBirth"
               control={control}

@@ -25,6 +25,7 @@
     "@shopify/flash-list": "^1.6.3",
     "@types/styled-components": "^5.1.32",
     "@types/styled-components-react-native": "^5.2.5",
+    "axios": "^1.6.7",
     "expo": "~49.0.15",
     "expo-av": "~13.4.1",
     "expo-file-system": "~15.4.5",
