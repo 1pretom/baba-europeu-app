@@ -16,6 +16,8 @@ import * as yup from "yup";
 import { Form } from "@components/Form";
 import { api } from "@services/api";
 import axios from "axios";
+import { AppError } from "@utils/AppError";
+import { useToast } from "native-base";
 
 const signUpSchema = yup.object({
   name: yup.string().required("Tem nome não é?"),
@@ -62,26 +64,32 @@ export const SignUp = () => {
   };
 
   const handleSignUp = async (data: FormDataProps) => {
+    const toast = useToast();
     const signUpData = {
       ...data,
       position,
       dateOfBirth: date,
     };
+    console.log("🚀 ~ handleSignUp ~ signUpData:", signUpData)
 
     try {
       const response = await api.post("/users", signUpData);
       console.log("🚀 ~ handleSignUp ~ response:", response.data);
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        Alert.alert(
-          "🚀 ~ handleSignUp ~ error:",
-          error?.response?.data?.message
-        );
-      }
+      const isAppError = error instanceof AppError;
+      const title = isAppError
+        ? error.message
+        : "Não foi possível criar a conta. Tente novamente depois";
+      toast.show({
+        title,
+        placement: "top",
+        bgColor: "red.500",
+      });
     } finally {
       navigation.navigate("PlayersList");
     }
   };
+  console.log("🚀 ~ handleSignUp ~ handleSignUp:", handleSignUp);
 
   return (
     <S.Container>
