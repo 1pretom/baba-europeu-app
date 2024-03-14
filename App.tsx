@@ -14,7 +14,7 @@ import { AuthContext } from "@contexts/AuthContext";
 import { StatusBar } from "react-native";
 import { ClerkProvider } from "@clerk/clerk-expo";
 
-// import { Mixpanel } from "mixpanel-react-native";
+import { Mixpanel } from "mixpanel-react-native";
 
 // const trackAutomaticEvents = false;
 // Mixpanel.init("9a95d7e3a449ba6373f0840469c5e5de", trackAutomaticEvents);
