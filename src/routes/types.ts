@@ -6,4 +6,6 @@ export type TTabRoutes = {
   SignIn: undefined;
   SignUp: undefined;
   WatchVideos: undefined;
+  SignInScreen: undefined;
+  SignUpScreen: undefined;
 };
