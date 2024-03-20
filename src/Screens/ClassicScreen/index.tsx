@@ -2,7 +2,6 @@ import { ClassicCard } from "@components/ClassicCard";
 import * as S from "./styles";
 import { useCallback, useState } from "react";
 import { Highlight } from "@components/Highlight";
-import { FlashList } from "@shopify/flash-list";
 import { Alert, FlatList } from "react-native";
 import { ListEmpty } from "@components/ListEmpty";
 import { Button } from "@components/Button";
@@ -66,7 +65,7 @@ export const ClassicScreen = () => {
           )}
         />
       )}
-      <Button title={"Criar time no clássico"} onPress={handleNewClassic} />
+      <Button title={"Criar classico no clássico"} onPress={handleNewClassic} />
     </S.Container>
   );
 };
