@@ -10,7 +10,7 @@ import {
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
 import { Loading } from "@components/Loading";
-import { AuthContext } from "@contexts/AuthContext";
+import { AuthContextProvider } from "@contexts/AuthContext";
 import { StatusBar } from "react-native";
 import { ClerkProvider } from "@clerk/clerk-expo";
 
@@ -34,18 +34,9 @@ export default function App() {
           backgroundColor="transparent"
           translucent
         />
-        <AuthContext.Provider
-          value={{
-            user: {
-              id: "1",
-              name: "wash",
-              email: "wash@gmail.com",
-              avatar: "wash.png",
-            },
-          }}
-        >
+        <AuthContextProvider>
           {fontsLoaded ? <Routes /> : <Loading />}
-        </AuthContext.Provider>
+        </AuthContextProvider>
       </S.Container>
     </ThemeProvider>
     // </ClerkProvider>
