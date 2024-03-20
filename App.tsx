@@ -27,25 +27,27 @@ export default function App() {
 
   return (
     // <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY}>
-      <ThemeProvider theme={theme}>
-        <S.Container>
-          <StatusBar
-            barStyle="light-content"
-            backgroundColor="transparent"
-            translucent
-          />
-          <AuthContext.Provider
-            value={{
+    <ThemeProvider theme={theme}>
+      <S.Container>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor="transparent"
+          translucent
+        />
+        <AuthContext.Provider
+          value={{
+            user: {
               id: "1",
               name: "wash",
               email: "wash@gmail.com",
               avatar: "wash.png",
-            }}
-          >
-            {fontsLoaded ? <Routes /> : <Loading />}
-          </AuthContext.Provider>
-        </S.Container>
-      </ThemeProvider>
+            },
+          }}
+        >
+          {fontsLoaded ? <Routes /> : <Loading />}
+        </AuthContext.Provider>
+      </S.Container>
+    </ThemeProvider>
     // </ClerkProvider>
   );
 }
