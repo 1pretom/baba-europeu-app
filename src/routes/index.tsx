@@ -5,10 +5,12 @@ import { useContext } from "react";
 import { AuthContext } from "@contexts/AuthContext";
 import { SignedIn, SignedOut } from "@clerk/clerk-expo";
 import SignUpScreen from "@screens/SignUpScreen";
+import { useAuth } from "@hooks/useAuth";
 
 export const Routes = () => {
-  const contextData = useContext(AuthContext);
-  console.log("🚀 ~ Routes ~ contextData:", contextData);
+  const { user } = useAuth();
+  console.log("🚀 ~ Routes ~ contextDat:", user);
+  
 
   return (
     <NavigationContainer>
