@@ -6,15 +6,29 @@ import { Highlight } from "@components/Highlight";
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
 import * as CONSTANT from "./constants";
+import { TFormData } from "./types";
+import { useAuth } from "@hooks/useAuth";
+import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
+import { useForm } from "react-hook-form";
 
 export const SignIn = () => {
-  const navigation = useNavigation();
+  const { signIn } = useAuth();
+
+  const navigation = useNavigation<AuthNavigatorRoutesProps>();
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
+
   const handlePressSignup = () => {
     navigation.navigate("SignUp");
   };
 
-  const handlePressSingIn = () => {
+  const handlePressSingIn = ({ email, password }: TFormData) => {
     console.log("sign in pressed");
+    signIn(email, password);
     navigation.navigate("PlayersList");
   };
 
@@ -42,7 +56,7 @@ export const SignIn = () => {
             />
             <Button
               title={CONSTANT.ACCESS_BUTTON_TITLE}
-              onPress={handlePressSingIn}
+              onPress={() => handlePressSingIn}
             />
           </S.Form>
           <S.ButtonContainer>

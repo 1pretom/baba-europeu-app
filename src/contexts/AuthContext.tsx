@@ -13,12 +13,12 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     avatar: "wash.png",
   });
 
+  const signIn = (email:string, password:string) => {
+    setUser({ name: "", email, id: "", avatar: "" });
+  };
+
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-      }}
-    >
+    <AuthContext.Provider value={{ user, signIn }}>
       {children}
     </AuthContext.Provider>
   );
