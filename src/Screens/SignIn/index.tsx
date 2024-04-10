@@ -26,9 +26,9 @@ export const SignIn = () => {
     navigation.navigate("SignUp");
   };
 
-  const handlePressSingIn = ({ email, password }: TFormData) => {
+  const handlePressSingIn = async ({ email, password }: TFormData) => {
     console.log("sign in pressed");
-    signIn(email, password);
+    await signIn(email, password);
     navigation.navigate("PlayersList");
   };
 

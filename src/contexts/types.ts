@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 export type AuthContextDataProps = {
   user: UserDTO;
-  signIn: (email: string, password: string) => void;
+  signIn: (email: string, password: string) => Promise<void>;
 };
 
 export type AuthContextProviderProps = {
