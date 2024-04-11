@@ -10,11 +10,14 @@ import { TFormData } from "./types";
 import { useAuth } from "@hooks/useAuth";
 import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
 import { useForm } from "react-hook-form";
+import { AppError } from "@utils/AppError";
+import { useToast } from "native-base";
 
 export const SignIn = () => {
   const { signIn } = useAuth();
 
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
+  const toast = useToast();
 
   const {
     control,
@@ -28,8 +31,20 @@ export const SignIn = () => {
 
   const handlePressSingIn = async ({ email, password }: TFormData) => {
     console.log("sign in pressed");
-    await signIn(email, password);
-    navigation.navigate("PlayersList");
+    try {
+      await signIn(email, password);
+      navigation.navigate("PlayersList");
+    } catch (error) {
+      const isAppError = error instanceof AppError;
+      const title = isAppError
+        ? error.message
+        : "Não foi possivel entrar. Tente novamente mais tarde.";
+      toast.show({
+        title,
+        placement: "top",
+        bgColor: "red.500",
+      });
+    }
   };
 
   return (
