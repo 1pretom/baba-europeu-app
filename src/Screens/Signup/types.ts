@@ -8,9 +8,9 @@ export type TPosition = {
 export type FormDataProps = {
   name: string;
   email: string;
-  nickname: string;
-  position: string;
+  nickname?: string;
+  position?: string;
   password: string;
-  passwordConfirm: string;
-  dateOfBirth: string;
+  passwordConfirm?: string;
+  dateOfBirth?: string;
 };

@@ -9,4 +9,5 @@ export type TButtonType = {
 export type TButton = TouchableOpacityProps & {
   title: string;
   type?: ButtonTypeStyle;
+  loading?: boolean;
 };

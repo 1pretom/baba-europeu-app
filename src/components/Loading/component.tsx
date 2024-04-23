@@ -1,8 +1,10 @@
 import * as S from "./styles";
-export const Loading = () => {
+import { TLoadingProps } from "./types";
+export const Loading = ({ size }: TLoadingProps) => {
+  const defaultSize = "large" || size;
   return (
     <S.Container>
-      <S.Load size="large" />
+      <S.Load size={defaultSize} />
     </S.Container>
   );
 };

@@ -18,6 +18,7 @@ import { api } from "@services/api";
 import axios from "axios";
 import { AppError } from "@utils/AppError";
 import { useToast } from "native-base";
+import { useAuth } from "@hooks/useAuth";
 
 const signUpSchema = yup.object({
   name: yup.string().required("Tem nome não é?"),
@@ -42,6 +43,9 @@ export const SignUp = () => {
   const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
   const [position, setPosition] = useState<string>();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const toast = useToast();
+  const { signIn } = useAuth();
 
   const {
     control,
@@ -64,22 +68,25 @@ export const SignUp = () => {
   };
 
   const handleSignUp = async (data: FormDataProps) => {
-    const toast = useToast();
     const signUpData = {
       ...data,
       position,
       dateOfBirth: date,
     };
-    console.log("🚀 ~ handleSignUp ~ signUpData:", signUpData)
 
     try {
-      const response = await api.post("/users", signUpData);
-      console.log("🚀 ~ handleSignUp ~ response:", response.data);
+      setIsLoading(true);
+      await api.post("/users", signUpData);
+      await signIn(data.email, data.password);
+
     } catch (error) {
+      setIsLoading(false);
+
       const isAppError = error instanceof AppError;
       const title = isAppError
         ? error.message
         : "Não foi possível criar a conta. Tente novamente depois";
+        
       toast.show({
         title,
         placement: "top",
@@ -89,7 +96,6 @@ export const SignUp = () => {
       navigation.navigate("PlayersList");
     }
   };
-  console.log("🚀 ~ handleSignUp ~ handleSignUp:", handleSignUp);
 
   return (
     <S.Container>
@@ -247,6 +253,7 @@ export const SignUp = () => {
             <Button
               title={CONSTANT.CREATE_AND_ENTER_BUTTON_TITLE}
               onPress={handleSubmit(handleSignUp)}
+              loading={isLoading}
             />
           </S.Form>
           <S.ButtonContainer>
@@ -255,6 +262,7 @@ export const SignUp = () => {
               title={CONSTANT.BACK_TO_LOGIN_BUTTON_TITLE}
               type="TERTIARY"
               onPress={handleGoBack}
+              loading={isLoading}
             />
           </S.ButtonContainer>
         </S.Content>
