@@ -9,12 +9,10 @@ import { useAuth } from "@hooks/useAuth";
 
 export const Routes = () => {
   const { user } = useAuth();
-  console.log("🚀 ~ Routes ~ contextDat:", user);
-  
 
   return (
     <NavigationContainer>
-      <DrawerRoutes />
+      {user.id ? <DrawerRoutes /> : <AuthRoutes />}
       {/* <SignedIn></SignedIn>
       <SignedOut>
         <SignUpScreen />
