@@ -5,11 +5,16 @@ import * as S from "./styles";
 import { Highlight } from "@components/Highlight";
 import { UserHeader } from "@components/UserHeader";
 import { useNavigation } from "@react-navigation/native";
+import { useAuth } from "@hooks/useAuth";
 
 export const PlayersList = () => {
   const navigation = useNavigation();
+  const {user, signOut} = useAuth()
+
   const handlePressExit = () => {
+    signOut()
     navigation.navigate("SignIn");
+
   };
   const handlePressUserPhoto = () => {
     navigation.navigate("Profile");
@@ -18,7 +23,7 @@ export const PlayersList = () => {
     <S.Container>
       <UserHeader
         onPressUserPhoto={handlePressUserPhoto}
-        name="Washington"
+        name={user.name}
         onPress={handlePressExit}
       />
       <Highlight title="Times" subtitle="Adicione os jogadores" />
