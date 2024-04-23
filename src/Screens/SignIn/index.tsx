@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./styles";
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
@@ -18,6 +18,7 @@ export const SignIn = () => {
 
   const navigation = useNavigation<AuthNavigatorRoutesProps>();
   const toast = useToast();
+  const [loading, setLoading] = useState(false);
 
   const {
     control,
@@ -32,14 +33,19 @@ export const SignIn = () => {
   const handlePressSingIn = async ({ email, password }: TFormData) => {
     console.log("sign in pressed");
     try {
+      setLoading(true);
       await signIn(email, password);
       navigation.navigate("PlayersList");
+    
     } catch (error) {
       const isAppError = error instanceof AppError;
       const title = isAppError
         ? error.message
         : "Não foi possivel entrar. Tente novamente mais tarde.";
-      toast.show({
+     
+        setLoading(false);
+
+        toast.show({
         title,
         placement: "top",
         bgColor: "red.500",
@@ -72,6 +78,7 @@ export const SignIn = () => {
             <Button
               title={CONSTANT.ACCESS_BUTTON_TITLE}
               onPress={() => handlePressSingIn}
+              
             />
           </S.Form>
           <S.ButtonContainer>
