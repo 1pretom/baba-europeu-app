@@ -19,7 +19,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     try {
       const { data } = await api.post("/sessions", { email, password });
 
-      if (data.user) {
+      if (data.user && data.token) {
         setUser(data.user);
         storageUserSave(data.user);
       }
