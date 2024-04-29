@@ -5,3 +5,4 @@ export const storageAuthTokenGet = async () => {
   const token = await AsyncStorage.getItem(AUTH_TOKEN_STORAGE);
   return token;
 };
+0
