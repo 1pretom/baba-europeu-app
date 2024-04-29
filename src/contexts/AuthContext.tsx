@@ -2,11 +2,14 @@ import { createContext, useEffect, useState } from "react";
 import { AuthContextDataProps, AuthContextProviderProps } from "./types";
 import { UserDTO } from "@dtos/UserDTO";
 import { api } from "@services/api";
-import { storageUserSave } from "@storage/users/storageUseSaver";
-import { storageUserGet } from "@storage/users/storageUserGet";
-import { storageUserRemove } from "@storage/users/storageUserRemove";
-import { storageAuthTokenSave } from "@storage/users/storageAuthToken";
-import { storageAuthTokenGet } from "@storage/users/storageGetToken";
+import {
+  storageUserSave,
+  storageAuthTokenSave,
+  storageUserRemove,
+  storageAuthTokenRemove,
+  storageUserGet,
+  storageAuthTokenGet,
+} from "@storage/users";
 
 export const AuthContext = createContext<AuthContextDataProps>(
   {} as AuthContextDataProps
@@ -30,7 +33,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       await storageAuthTokenSave(token);
     } catch (error) {
       throw error;
-    }finally {
+    } finally {
       setIsLoadingUserStorageData(false);
     }
   };
@@ -40,7 +43,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       const { data } = await api.post("/sessions", { email, password });
 
       if (data.user && data.token) {
-      await storageUserAndTokenSave(data.user, data.token);
+        await storageUserAndTokenSave(data.user, data.token);
 
         userAndTokenUpdate(data.user, data.token);
       }
@@ -57,6 +60,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
       setUser({} as UserDTO);
       await storageUserRemove();
+      await storageAuthTokenRemove();
     } catch (error) {
       throw error;
     } finally {
