@@ -31,10 +31,16 @@ export const Profile = () => {
         const photoInfo = await FileSystem.getInfoAsync(
           photoSelected.assets[0].uri
         );
-        const {size}: any = photoInfo
-        if (size && (size / 1024 / 1024) > 10) {
+        const { size }: any = photoInfo;
+        if (size && size / 1024 / 1024 > 10) {
           return Alert.alert("Tá muito grande, escolha uma foto com menos MB");
         }
+        const fileExtension = photoSelected.assets[0].uri.split(".").pop();
+        const photoFile = {
+          name: `${user.name}.${fileExtension}`.toLocaleLowerCase,
+          uri: photoSelected.assets[0].uri,
+          type: `${photoSelected.assets[0].type}/${fileExtension}`,
+        };
 
         setUserPhoto(photoSelected.assets[0].uri);
       }
