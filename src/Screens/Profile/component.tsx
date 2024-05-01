@@ -8,12 +8,15 @@ import * as ImagePicker from "expo-image-picker";
 import { Alert } from "react-native";
 import { Loading } from "@components/Loading";
 import * as FileSystem from "expo-file-system";
+import { api } from "@services/api";
+import { useToast } from "native-base";
 
 export const Profile = () => {
   const [userPhoto, setUserPhoto] = useState(
     "https://static.vecteezy.com/system/resources/thumbnails/019/879/198/small/user-icon-on-transparent-background-free-png.png"
   );
   const [photoIsLoading, setPhotoIsLoading] = useState(false);
+  const toast = useToast();
 
   const handleUserPhotoSelection = async () => {
     setPhotoIsLoading(true);
@@ -40,8 +43,20 @@ export const Profile = () => {
           name: `${user.name}.${fileExtension}`.toLocaleLowerCase,
           uri: photoSelected.assets[0].uri,
           type: `${photoSelected.assets[0].type}/${fileExtension}`,
-        };
-
+        } as any;
+        const userPhotoUploadFrom = new FormData();
+        userPhotoUploadFrom.append("avatar", photoFile);
+        await api.patch("/users/avatar", userPhotoUploadFrom, {
+          headers: {
+            "Content-type": "multipart/form-data",
+          },
+        });
+        toast.show({
+          title: "Sucesso",
+          description: "Foto atualizada com sucesso",
+          duration: 3000,
+          bgColor: "green.500",
+        });
         setUserPhoto(photoSelected.assets[0].uri);
       }
     } catch (error) {
