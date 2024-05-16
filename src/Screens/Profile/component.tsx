@@ -10,13 +10,55 @@ import { Loading } from "@components/Loading";
 import * as FileSystem from "expo-file-system";
 import { api } from "@services/api";
 import { useToast } from "native-base";
+import { useAuth } from "@hooks/useAuth";
+import { useForm } from "react-hook-form";
+import { FormDataProps } from "@screens/SignUp/types";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { UserDTO } from "@dtos/UserDTO";
+
+const profileSchema = yup.object({
+  name: yup.string().required("Informe o nome"),
+  password: yup
+    .string()
+    .min(6, "A senha deve ter pelo menos 6 dígitos.")
+    .nullable()
+    .transform((value) => (!!value ? value : null)),
+  confirm_password: yup
+    .string()
+    .nullable()
+    .transform((value) => (!!value ? value : null))
+    .oneOf([yup.ref("password"), null], "A confirmação de senha não confere.")
+    .when("password", {
+      is: (Field: any) => Field,
+      then: yup
+        .string()
+        .nullable()
+        .required("Informe a confirmação da senha.")
+        .transform((value) => (!!value ? value : null)),
+    }),
+});
 
 export const Profile = () => {
+  const [isUpdating, setIsUpdating] = useState(false);
   const [userPhoto, setUserPhoto] = useState(
     "https://static.vecteezy.com/system/resources/thumbnails/019/879/198/small/user-icon-on-transparent-background-free-png.png"
   );
   const [photoIsLoading, setPhotoIsLoading] = useState(false);
+
   const toast = useToast();
+  const { user } = useAuth();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormDataProps>({
+    defaultValues: {
+      name: user.name,
+      email: user.email,
+    },
+    resolver: yupResolver(profileSchema),
+  });
 
   const handleUserPhotoSelection = async () => {
     setPhotoIsLoading(true);
@@ -44,13 +86,23 @@ export const Profile = () => {
           uri: photoSelected.assets[0].uri,
           type: `${photoSelected.assets[0].type}/${fileExtension}`,
         } as any;
+
         const userPhotoUploadFrom = new FormData();
         userPhotoUploadFrom.append("avatar", photoFile);
-        await api.patch("/users/avatar", userPhotoUploadFrom, {
-          headers: {
-            "Content-type": "multipart/form-data",
-          },
-        });
+        const avatarUpdatedResponse = await api.patch(
+          "/users/avatar",
+          userPhotoUploadFrom,
+          {
+            headers: {
+              "Content-type": "multipart/form-data",
+            },
+          }
+        );
+
+        const userUpdated = user;
+        userUpdated.avatar = avatarUpdatedResponse.data.avatar;
+        updatedUserProfile(userUpdated);
+
         toast.show({
           title: "Sucesso",
           description: "Foto atualizada com sucesso",
@@ -104,3 +156,7 @@ export const Profile = () => {
     </S.Container>
   );
 };
+function updatedUserProfile(userUpdated: UserDTO) {
+  throw new Error("Function not implemented.");
+}
+

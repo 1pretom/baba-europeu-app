@@ -68,6 +68,15 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     }
   };
 
+  const updatedUserProfile = async (userUpdated: UserDTO) => {
+    try {
+      setUser(userUpdated);
+      await storageUserSave(userUpdated);
+    } catch (error) {
+      throw error;
+    }
+  };
+
   const loadUserData = async () => {
     try {
       setIsLoadingUserStorageData(true);
@@ -89,7 +98,13 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   });
   return (
     <AuthContext.Provider
-      value={{ user, signIn, isLoadingUserStorageData, signOut }}
+      value={{
+        user,
+        signIn,
+        isLoadingUserStorageData,
+        signOut,
+        updatedUserProfile,
+      }}
     >
       {children}
     </AuthContext.Provider>
