@@ -1,4 +1,4 @@
- **# Baba Europeu App**
+ **# Baba Europeu**
 
 **Organize your football matches and connect with your teammates effortlessly!**
 
