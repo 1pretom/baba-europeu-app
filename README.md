@@ -1,6 +1,6 @@
 # Baba Europeu
 
-**Organize your football matches and connect with your teammates effortlessly!**
+**Organize your football matches and connect with your teammates!**
 
 **Built with React Native and TypeScript for a seamless experience across devices.**
 
